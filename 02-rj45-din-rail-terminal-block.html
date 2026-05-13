@@ -1,0 +1,440 @@
+<div style="box-sizing:border-box; color:#333333; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif; line-height:1.8; margin-bottom:40px; margin-left:auto; margin-right:auto; margin-top:40px; max-width:1200px; padding:0 20px; width:100%"><!-- Hero Section -->
+<div style="background-color:#1e3a8a; background-image:linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%); border-radius:8px; box-shadow:0 8px 20px rgba(0,0,0,0.15); color:#ffffff; margin-bottom:40px; padding:50px 30px; text-align:center">
+<div style="color:#a7f3d0; font-size:13px; font-weight:700; letter-spacing:0.04em; margin-bottom:12px; text-transform:uppercase">Sub-Pillar Guide</div>
+
+<h1>RJ45 DIN Rail Terminal Block: Pinout, Wiring and Industrial Ethernet Use</h1>
+
+<p style="color:#e2e8f0; font-size:18px; line-height:1.8; margin-bottom:18px; margin-left:auto; margin-right:auto; margin-top:0; max-width:1000px">RJ45 DIN rail terminal blocks break out all 8 pins of an RJ45 connector to individually numbered screw or spring terminals on a 35 mm DIN rail. This guide covers pinout references for T568A, T568B, and Profinet, step-by-step wiring instructions, industrial Ethernet applications, and selection criteria for control cabinet projects.</p>
+</div>
+<!-- TL;DR Box -->
+
+<div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; margin-bottom:30px; padding:22px 28px">
+<div style="color:#166534; font-size:14px; font-weight:700; letter-spacing:0.03em; margin-bottom:10px; text-transform:uppercase">TL;DR - Key Takeaways</div>
+
+<ul style="color:#166534; font-size:15px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li>An RJ45 DIN rail terminal block passively breaks 8 pins to screw/spring terminals - it is not a switch or signal converter.</li>
+	<li>T568B is the dominant pinout for industrial Ethernet; Profinet uses only pins 1, 2, 3, 6.</li>
+	<li>Wire each pin to the correct terminal number, verify continuity, then secure the cable strain relief.</li>
+	<li>Choose shielded modules for environments with VFDs, servo motors, or heavy EMI.</li>
+	<li>Always confirm the device's pinout first - RJ45 is a connector format, not a protocol.</li>
+</ul>
+</div>
+<!-- Definition Box -->
+
+<div style="background:#eff6ff; border-left:4px solid #3b82f6; border-radius:4px; margin-bottom:40px; padding:18px 24px">
+<p style="color:#1e40af; font-size:16px; font-weight:500; line-height:1.7; margin-bottom:0; margin-top:0"><strong>Definition:</strong> An RJ45 DIN rail terminal block is a passive module that converts a standard 8P8C (RJ45) connector into eight individually numbered screw or spring terminals, mounted on a 35 mm DIN rail for easy cabinet wiring, testing, and maintenance.</p>
+</div>
+<!-- Table of Contents -->
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; margin-bottom:60px; padding:25px 30px">
+<h3 style="border-bottom:1px solid #eeeeee; color:#111827; font-size:18px; margin-bottom:15px; margin-top:0; padding-bottom:10px">📋 Contents</h3>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px">
+<ol style="color:#4b5563; flex:1; font-size:15px; line-height:1.8; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; min-width:280px; padding-left:20px" class="pro-ulli1">
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#rj45-sec1">What Is an RJ45 DIN Rail Terminal Block?</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#rj45-sec2">RJ45 Pinout: T568A vs T568B vs Profinet</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#rj45-sec3">How to Wire an RJ45 Terminal Block (Step-by-Step)</a></li>
+</ol>
+
+<ol start="4" style="color:#4b5563; flex:1; font-size:15px; line-height:1.8; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; min-width:280px; padding-left:20px" class="pro-ulli1">
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#rj45-sec4">Industrial Ethernet Applications</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#rj45-sec5">Selection Criteria</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#rj45-sec6">Common Wiring Mistakes</a></li>
+	<li style="margin-bottom:0;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#rj45-faq">Frequently Asked Questions</a></li>
+</ol>
+</div>
+</div>
+
+<!-- Section 1 -->
+
+<div style="margin-bottom:60px">
+<h2 id="rj45-sec1" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">What Is an RJ45 DIN Rail Terminal Block?</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">An RJ45 DIN rail terminal block takes a standard 8-pin RJ45 plug (8P8C) and maps each of the 8 conductors to a dedicated screw or spring terminal on a DIN rail module. You plug a patch cable into the RJ45 jack on one side; on the other side, 8 numbered terminals let you land field wires, jumper signals, or probe individual pins with a multimeter.</p>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">It is a <strong>passive, transparent device</strong>. No signal processing, no packet switching, no protocol conversion. Pin 1 on the RJ45 goes to Terminal 1. Pin 8 goes to Terminal 8. That is the entire function.</p>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">This simplicity is also why it is so useful. In a control cabinet with 10 or 20 Ethernet connections, having each link broken out to labeled terminals makes commissioning, documentation, and future troubleshooting dramatically faster than tracing patch cables behind a panel.</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px; margin-bottom:20px; margin-top:30px">
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; flex:1; min-width:250px; padding:15px; text-align:center">
+<div style="align-items:center; background:#f8fafc; border-radius:6px; display:flex; justify-content:center; min-height:200px; padding:10px"><img alt="RJ45 DIN rail terminal block front and back view showing connector and screw terminals" loading="lazy" title="RJ45 DIN Rail Terminal Block" src="/uploads/PLACEHOLDER-rj45-din-rail-terminal-block.webp" /></div>
+
+<p style="color:#0f766e; font-size:14px; font-weight:bold; margin-bottom:0; margin-left:0; margin-right:0; margin-top:10px">RJ45 DIN Rail Terminal Block: 8 Pins to 8 Terminals</p>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; flex:1; min-width:250px; padding:15px; text-align:center">
+<div style="align-items:center; background:#f8fafc; border-radius:6px; display:flex; justify-content:center; min-height:200px; padding:10px"><img alt="RJ45 terminal block installed on DIN rail inside industrial cabinet" loading="lazy" title="RJ45 Module Installed on DIN Rail" src="/uploads/PLACEHOLDER-rj45-terminal-block-installed.webp" /></div>
+
+<p style="color:#0f766e; font-size:14px; font-weight:bold; margin-bottom:0; margin-left:0; margin-right:0; margin-top:10px">Installed in Control Cabinet on 35 mm DIN Rail</p>
+</div>
+</div>
+</div>
+<!-- Section 2: Pinout -->
+
+<div style="margin-bottom:60px">
+<h2 id="rj45-sec2" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">RJ45 Pinout Reference: T568A vs T568B vs Profinet</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">Before wiring an RJ45 terminal block, you must know which pinout standard the connected device expects. The three most common in industrial applications are T568A, T568B, and Profinet. Here is the pin-by-pin comparison:</p>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:10%"><span style="color:#ffffff">Pin</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:22%"><span style="color:#ffffff">T568A</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:22%"><span style="color:#ffffff">T568B</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:22%"><span style="color:#ffffff">Profinet</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:24%"><span style="color:#ffffff">100BASE-TX Signal</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>1</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Green</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Orange</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Orange</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">TX+ (Transmit +)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>2</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Green</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Orange</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Orange</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">TX- (Transmit -)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>3</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Orange</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Green</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Green</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">RX+ (Receive +)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>4</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Blue</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Blue</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Not used*</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">—</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>5</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Blue</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Blue</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Not used*</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">—</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>6</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Orange</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Green</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Green</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">RX- (Receive -)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>7</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Brown</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">White/Brown</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Not used*</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">—</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px"><strong>8</strong></td>
+			<td style="padding:11px 14px">Brown</td>
+			<td style="padding:11px 14px">Brown</td>
+			<td style="padding:11px 14px">Not used*</td>
+			<td style="padding:11px 14px">—</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p style="color:#6b7280; font-size:14px; line-height:1.6; margin-bottom:20px">*Profinet at 100 Mbit/s uses only 2 pairs (pins 1, 2, 3, 6). Pins 4, 5, 7, 8 are reserved but not used for data in standard Profinet installations. They may carry PoE power in some configurations.</p>
+
+<div style="background:#fff7ed; border-left:4px solid #ea580c; border-radius:4px; margin-bottom:20px; padding:15px">
+<p style="color:#9a3412; font-size:15px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong>⚠️ Key point:</strong> T568B is the dominant standard in industrial Ethernet. If you are unsure which to use, T568B is usually the correct choice for new installations. Always match both ends of the link to the same standard.</p>
+</div>
+
+<div style="background:#fff7ed; border-left:4px solid #ea580c; border-radius:4px; margin-bottom:20px; padding:15px">
+<p style="color:#9a3412; font-size:15px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong>⚠️ RJ45 is a connector format, not a protocol.</strong> The same 8P8C plug appears on Ethernet, RS-485-over-RJ45 systems (e.g., Crestron, AMX), telephone wiring, and proprietary serial buses. Never assume "RJ45 = Ethernet." Always check the device documentation.</p>
+</div>
+</div>
+
+<!-- Section 3: How to Wire -->
+
+<div style="margin-bottom:60px">
+<h2 id="rj45-sec3" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">How to Wire an RJ45 to a DIN Rail Terminal Block (Step-by-Step)</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">Follow these steps for a reliable installation. Total time: approximately 10-15 minutes per module for a first-time installer.</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px; margin-bottom:30px">
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.02); flex:1; min-width:250px; padding:20px">
+<h3 style="color:#0056b3; font-size:18px; margin-bottom:10px; margin-top:0">Step 1: Prepare the cable</h3>
+
+<ul style="color:#4b5563; font-size:14px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:15px" class="pro-ulli1">
+	<li>Strip the outer jacket 40-50 mm from the end</li>
+	<li>Untwist each pair only enough to reach the terminal (max 13 mm untwist for Cat5e/6)</li>
+	<li>If shielded cable: fold shield back or connect drain wire to ground terminal</li>
+	<li>Trim conductor ends to 8-10 mm stripped length</li>
+</ul>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.02); flex:1; min-width:250px; padding:20px">
+<h3 style="color:#0056b3; font-size:18px; margin-bottom:10px; margin-top:0">Step 2: Identify the pinout</h3>
+
+<ul style="color:#4b5563; font-size:14px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:15px" class="pro-ulli1">
+	<li>Check device documentation for required pinout (T568A, T568B, or custom)</li>
+	<li>Refer to the pinout table above</li>
+	<li>Match wire colors to terminal numbers on the module</li>
+	<li>For Profinet: only pins 1, 2, 3, 6 carry data</li>
+</ul>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.02); flex:1; min-width:250px; padding:20px">
+<h3 style="color:#0056b3; font-size:18px; margin-bottom:10px; margin-top:0">Step 3: Land wires on terminals</h3>
+
+<ul style="color:#4b5563; font-size:14px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:15px" class="pro-ulli1">
+	<li>Insert each conductor into its numbered terminal</li>
+	<li>For screw terminals: tighten to 0.2-0.4 Nm (do not overtighten)</li>
+	<li>For spring terminals: push conductor in until it clicks</li>
+	<li>Ensure no bare copper is exposed outside the terminal</li>
+</ul>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.02); flex:1; min-width:250px; padding:20px">
+<h3 style="color:#0056b3; font-size:18px; margin-bottom:10px; margin-top:0">Step 4: Verify and secure</h3>
+
+<ul style="color:#4b5563; font-size:14px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:15px" class="pro-ulli1">
+	<li>Test continuity from RJ45 plug pin to terminal (pin-by-pin)</li>
+	<li>For Ethernet: use a cable tester to verify wiremap and check for shorts</li>
+	<li>Secure cable jacket with the strain relief clamp on the module</li>
+	<li>Label the module with circuit ID, destination, and date</li>
+</ul>
+</div>
+</div>
+
+<div style="background:#f0fdf4; border-left:4px solid #16a34a; border-radius:4px; margin-bottom:25px; padding:15px">
+<p style="color:#166534; font-size:15px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong>Pro tip:</strong> Keep pair twists as close to the terminal as possible. Excessive untwisting (more than 13 mm) degrades crosstalk performance and can cause link failures on Cat6 and above.</p>
+</div>
+</div>
+<!-- Section 4: Applications -->
+
+<div style="margin-bottom:60px">
+<h2 id="rj45-sec4" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Industrial Ethernet Applications</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">RJ45 DIN rail terminal blocks are used wherever industrial Ethernet connections need to be terminated, documented, and made serviceable inside a cabinet. The most common protocols and use cases:</p>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:25%"><span style="color:#ffffff">Protocol</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:20%"><span style="color:#ffffff">Speed</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:20%"><span style="color:#ffffff">Pins Used</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:35%"><span style="color:#ffffff">Typical Application</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>Profinet</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">100 Mbit/s</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">1, 2, 3, 6</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Siemens PLC to I/O, drives, HMI</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>EtherNet/IP</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">100 Mbit/s</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">1, 2, 3, 6</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Allen-Bradley PLC, Rockwell systems</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>Modbus TCP</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">10/100 Mbit/s</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">1, 2, 3, 6</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">HVAC controllers, energy meters, gateways</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>EtherCAT</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">100 Mbit/s</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">1, 2, 3, 6</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Motion control, high-speed I/O</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px"><strong>BACnet/IP</strong></td>
+			<td style="padding:11px 14px">10/100 Mbit/s</td>
+			<td style="padding:11px 14px">1, 2, 3, 6</td>
+			<td style="padding:11px 14px">Building automation, HVAC</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:15px">All of the above use standard 100BASE-TX signaling on pins 1, 2, 3, 6. This means an 8-pin RJ45 terminal block with pass-through wiring works for all of them without modification.</p>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:15px">For Gigabit Ethernet (1000BASE-T) or 10G applications, all 8 pins carry data. In these cases, cable quality and minimal untwisting become even more critical.</p>
+</div>
+<!-- Section 5: Selection -->
+
+<div style="margin-bottom:60px">
+<h2 id="rj45-sec5" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Selection Criteria for RJ45 DIN Rail Terminal Blocks</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">Not all RJ45 terminal blocks are equal. Use these criteria to match the right module to your application:</p>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:30%"><span style="color:#ffffff">Criterion</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:35%"><span style="color:#ffffff">Options</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:35%"><span style="color:#ffffff">When to Choose</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Terminal type</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Screw / Spring / Push-in</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Spring for vibration; screw for thick wires</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Shielding</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Shielded housing / Unshielded</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Shielded near VFDs, servo drives, heavy EMI</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">RJ45 ports</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Single / Dual (2x RJ45)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Dual for daisy-chain or tap configurations</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Wire gauge</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">22-26 AWG (0.14-0.34 mm²)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Must match Ethernet cable gauge</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">PoE support</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">All 8 pins broken out / 4 pins only</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">8-pin for PoE (power on pins 4,5,7,8)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">LED indicators</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">With LED / Without</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">LED helps quick visual link confirmation</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px">Certifications</td>
+			<td style="padding:11px 14px">CE / UL / RoHS</td>
+			<td style="padding:11px 14px">UL for North America; CE for Europe</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div style="background:#f8fafc; border-left:4px solid #0f766e; border-radius:6px; margin-top:25px; padding:20px 25px">
+<h3 style="color:#0f766e; font-size:18px; margin-bottom:8px; margin-top:0">📚 Related Guide</h3>
+
+<p style="color:#1f2937; font-size:15px; line-height:1.7; margin-bottom:0; margin-top:0">For a detailed comparison of terminal connection methods: <strong><a target="_blank" style="color:#0f766e; text-decoration:underline;" href="https://www.premier-cables.com/news/screw-vs-spring-vs-push-in-terminal.html">Screw vs Spring vs Push-in Terminal: Which to Choose for Industrial Cabinets</a></strong></p>
+</div>
+</div>
+
+<!-- Section 6: Common Mistakes -->
+
+<div style="margin-bottom:60px">
+<h2 id="rj45-sec6" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Common Wiring Mistakes</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">These are the errors we see most often during field support. Avoiding them saves hours of troubleshooting.</p>
+
+<ol style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:25px; margin-top:0; padding-left:22px" class="pro-ulli1">
+	<li style="margin-bottom:10px;"><strong>Mixing T568A and T568B.</strong> Using A at one end and B at the other creates a crossover - which causes link failure on most modern auto-MDIX devices or intermittent issues on older equipment.</li>
+	<li style="margin-bottom:10px;"><strong>Excessive untwisting.</strong> Untwisting pairs more than 13 mm (0.5 inch) degrades crosstalk performance. For Cat6, keep it under 6 mm.</li>
+	<li style="margin-bottom:10px;"><strong>Swapping pairs within a pair.</strong> Connecting pin 1 (TX+) to the wrong conductor inverts the signal polarity. Some devices tolerate this; many do not.</li>
+	<li style="margin-bottom:10px;"><strong>Not connecting the shield.</strong> In environments with VFDs or servo drives, an ungrounded shield provides zero EMI protection. Connect the drain wire to the module's ground terminal or the DIN rail ground bar.</li>
+	<li style="margin-bottom:10px;"><strong>Assuming RJ45 = Ethernet.</strong> Some devices use RJ45 for RS-485, RS-232, or proprietary serial - with completely different pinouts. Wiring these to T568B will result in no communication or equipment damage.</li>
+	<li style="margin-bottom:10px;"><strong>No strain relief.</strong> Without securing the cable jacket, vibration or cable weight pulls on the terminals, eventually causing intermittent contact.</li>
+</ol>
+
+<div style="background:#f0fdf4; border-left:4px solid #16a34a; border-radius:4px; margin-bottom:25px; padding:15px">
+<p style="color:#166534; font-size:15px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong>📚 Need symptom-based troubleshooting?</strong> See our dedicated guide: <a target="_blank" style="color:#0f766e; text-decoration:underline;" href="https://www.premier-cables.com/news/din-rail-terminal-block-troubleshooting.html">Common DIN Rail Terminal Block Wiring Problems and How to Fix Them</a></p>
+</div>
+</div>
+<!-- FAQ Section -->
+
+<div style="background:#f8fafc; border-radius:8px; border:1px solid #e5e7eb; margin-bottom:60px; padding:35px 30px">
+<h2 id="rj45-faq" style="border-bottom:2px solid #e5e7eb; color:#111827; font-size:26px; line-height:1.3; margin-bottom:25px; margin-top:0; padding-bottom:10px; scroll-margin-top:40px">Frequently Asked Questions</h2>
+
+<p style="margin-bottom:5px"><strong>What is the difference between an RJ45 terminal block and an Ethernet switch?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">A terminal block is a passive pass-through that connects each RJ45 pin directly to a terminal. It does not process data, assign IP addresses, or switch packets between ports. An Ethernet switch is an active device that routes traffic between multiple ports.</p>
+
+<p style="margin-bottom:5px"><strong>Can I use an RJ45 terminal block for Gigabit Ethernet?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">Yes, as long as the module breaks out all 8 pins and you maintain proper cable quality (Cat5e minimum, Cat6 recommended). Keep untwist length minimal. Gigabit uses all 4 pairs simultaneously, so every pin matters.</p>
+
+<p style="margin-bottom:5px"><strong>Do I need a shielded RJ45 terminal block?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">If your cabinet contains variable frequency drives (VFDs), servo motors, or other high-EMI sources, use a shielded module with proper ground connection. For clean environments with only low-power control signals, unshielded modules work fine.</p>
+
+<p style="margin-bottom:5px"><strong>Which pinout should I use: T568A or T568B?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">T568B is the dominant standard in industrial environments and commercial installations. Use T568B unless your facility has an existing T568A infrastructure. The key rule: both ends of any link must use the same standard.</p>
+
+<p style="margin-bottom:5px"><strong>Can an RJ45 terminal block be used for PoE (Power over Ethernet)?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:0; margin-top:0">Yes, if the module breaks out all 8 pins. PoE uses pins 4, 5, 7, 8 for power delivery (Mode B) or overlays power on data pairs 1, 2, 3, 6 (Mode A). Ensure the terminal block's current rating supports the PoE power class you need (up to 960 mA for PoE+ at 48V).</p>
+</div>
+<!-- Related Articles -->
+
+<div style="background:#ffffff; border:1px solid #e5e7eb; border-radius:8px; margin-bottom:40px; padding:25px 30px">
+<h3 style="color:#111827; font-size:20px; margin-bottom:15px; margin-top:0">📖 Related Articles in This Series</h3>
+
+<ul style="color:#1f2937; font-size:15px; line-height:1.9; margin-bottom:0; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/din-rail-interface-terminal-block-guide.html">DIN Rail Interface Terminal Blocks: Complete Guide for RJ45, DB9 and DB25</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/db9-din-rail-terminal-block.html">DB9 DIN Rail Terminal Block for Serial Communication Wiring</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/screw-vs-spring-vs-push-in-terminal.html">Screw vs Spring vs Push-in Terminal: Which to Choose</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/din-rail-terminal-block-troubleshooting.html">Common DIN Rail Terminal Block Wiring Problems and How to Fix Them</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/plc-control-cabinet-wiring-din-rail.html">DIN Rail Interface Modules in PLC Control Cabinets: Best Practices</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/custom-oem-din-rail-terminal-block.html">Custom &amp; OEM DIN Rail Terminal Blocks: MOQ and Lead Time</a></li>
+</ul>
+</div>
+<!-- CTA Section -->
+
+<div style="background:#eff6ff; border-radius:8px; border:1px solid #bfdbfe; margin-bottom:60px; padding:35px 30px">
+<h2 style="color:#1e3a8a; font-size:24px; line-height:1.3; margin-bottom:15px; margin-top:0">Need an RJ45 DIN Rail Terminal Block?</h2>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:15px; margin-top:0">Tell us your <strong>application (Profinet / EtherNet/IP / Modbus TCP), shielding requirement, terminal type preference, and quantity</strong>. Our engineering team will recommend the right module and reply within 24 hours.</p>
+
+<ul style="color:#4b5563; font-size:15px; line-height:1.8; margin-bottom:20px; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li>Standard 8-pin pass-through modules in stock</li>
+	<li>Custom pinout mapping available for non-standard devices</li>
+	<li>Shielded and unshielded versions</li>
+	<li>Free pinout verification before production</li>
+</ul>
+
+<div><a target="_blank" style="display:inline-block; border:1px solid #0f766e; background-color:#0f766e; color:#ffffff; font-weight:bold; text-decoration:none; padding:10px 25px; border-radius:4px; font-size:15px; box-shadow:0 4px 10px rgba(15,118,110,0.2);" href="https://www.premier-cables.com/contact-us">Send Your Requirements →</a></div>
+</div>
+<!-- Contact Block -->
+
+<div style="background:#ffffff; border-radius:8px; border-top:4px solid #0f766e; border:1px solid #e5e7eb; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:30px; padding:35px 30px">
+<div style="color:#0f766e; font-size:13px; font-weight:700; letter-spacing:0.04em; margin-bottom:12px; text-transform:uppercase">📩 Contact Us</div>
+
+<h2 style="color:#111827; font-size:26px; line-height:1.3; margin-bottom:15px; margin-top:0">Source RJ45 DIN Rail Terminal Blocks</h2>
+
+<p style="color:#444444; font-size:17px; line-height:1.8; margin-bottom:20px; margin-top:0"><strong>Premier Cable</strong> manufactures RJ45 DIN rail interface modules for Profinet, EtherNet/IP, Modbus TCP, and custom applications. Standard pass-through and custom pin assignments available. Shielded and unshielded versions in stock.</p>
+
+<div style="color:#1f2937; display:flex; flex-wrap:wrap; font-size:16px; gap:15px 30px; line-height:1.8">
+<div><strong>Email:</strong> <a style="color:#0f766e; text-decoration:none; font-weight:bold;" href="mailto:sales03@premier-cable.net">sales03@premier-cable.net</a></div>
+
+<div><strong>WhatsApp:</strong> <a style="color:#0f766e; text-decoration:none; font-weight:bold;" href="https://wa.me/8618980808890">+86 189 8080 8890</a></div>
+
+<div><strong>Website:</strong> <a style="color:#0f766e; text-decoration:none; font-weight:bold;" href="https://www.premier-cables.com">www.premier-cables.com</a></div>
+</div>
+</div>
+<!-- Footer Meta -->
+
+<div style="border-top:1px solid #e5e7eb; color:#6b7280; font-size:14px; line-height:1.7; margin-top:30px; padding-top:20px">
+<p style="margin:0 0 6px 0"><strong>Author:</strong> [Engineer Name] - Product Engineer, Premier Cable</p>
+
+<p style="margin:0 0 6px 0"><strong>Reviewed by:</strong> [Senior Engineer Name] - Field Application Engineer</p>
+
+<p style="margin:0"><strong>Last Updated:</strong> May 2026</p>
+</div>
+</div>
