@@ -1,0 +1,622 @@
+<div style="box-sizing:border-box; color:#333333; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif; line-height:1.8; margin-bottom:40px; margin-left:auto; margin-right:auto; margin-top:40px; max-width:1200px; padding:0 20px; width:100%"><!-- Hero Section -->
+<div style="background-color:#1e3a8a; background-image:linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%); border-radius:8px; box-shadow:0 8px 20px rgba(0,0,0,0.15); color:#ffffff; margin-bottom:40px; padding:50px 30px; text-align:center">
+<div style="color:#a7f3d0; font-size:13px; font-weight:700; letter-spacing:0.04em; margin-bottom:12px; text-transform:uppercase">Sub-Pillar Guide</div>
+
+<h1>DB25 DIN Rail Terminal Block: Multi-Signal Breakout for Industrial Equipment</h1>
+
+<p style="color:#e2e8f0; font-size:18px; line-height:1.8; margin-bottom:18px; margin-left:auto; margin-right:auto; margin-top:0; max-width:1000px">A DB25 DIN rail terminal block converts a 25-pin D-sub connector into individually numbered screw or spring terminals on a standard 35 mm DIN rail. This guide covers pinout references for parallel port and general-purpose multi-signal applications, step-by-step wiring instructions, CNC and test equipment use cases, and selection criteria for control cabinet installations.</p>
+</div>
+<!-- TL;DR Box -->
+
+<div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; margin-bottom:30px; padding:22px 28px">
+<div style="color:#166534; font-size:14px; font-weight:700; letter-spacing:0.03em; margin-bottom:10px; text-transform:uppercase">TL;DR - Key Takeaways</div>
+
+<ul style="color:#166534; font-size:15px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li>A DB25 DIN rail terminal block passively breaks out all 25 pins to individually labeled screw or spring terminals.</li>
+	<li>Common applications include CNC machine I/O, test equipment signal breakout, and legacy parallel port connections.</li>
+	<li>DB25 pinout is NOT standardized across all equipment - always verify with device documentation before wiring.</li>
+	<li>High pin count (25 pins) makes clear terminal labeling and organized cable management essential.</li>
+	<li>Available in male and female versions with screw or spring-clamp terminals to match your equipment.</li>
+</ul>
+</div>
+<!-- Definition Box -->
+
+<div style="background:#eff6ff; border-left:4px solid #3b82f6; border-radius:4px; margin-bottom:40px; padding:18px 24px">
+<p style="color:#1e40af; font-size:16px; font-weight:500; line-height:1.7; margin-bottom:0; margin-top:0"><strong>Definition:</strong> A DB25 DIN rail terminal block is a passive breakout module that converts a standard 25-pin D-sub connector into 25 individually numbered screw or spring terminals, mounted on a 35 mm DIN rail. It provides tool-free access to every signal line for wiring, testing, and maintenance of multi-signal industrial connections.</p>
+</div>
+<!-- Table of Contents -->
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; margin-bottom:60px; padding:25px 30px">
+<h3 style="border-bottom:1px solid #eeeeee; color:#111827; font-size:18px; margin-bottom:15px; margin-top:0; padding-bottom:10px">📋 Contents</h3>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px">
+<ol style="color:#4b5563; flex:1; font-size:15px; line-height:1.8; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; min-width:280px; padding-left:20px" class="pro-ulli1">
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#db25-sec1">What Is a DB25 DIN Rail Terminal Block?</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#db25-sec2">DB25 Pinout Reference</a></li>
+	<li style="margin-bottom:0;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#db25-sec3">Wiring a DB25 Breakout Module</a></li>
+</ol>
+
+<ol start="4" style="color:#4b5563; flex:1; font-size:15px; line-height:1.8; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; min-width:280px; padding-left:20px" class="pro-ulli1">
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#db25-sec4">Applications: CNC, Test Equipment, Legacy Control</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#db25-sec5">DB25 vs DB37 vs DB50 Selection Tips</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#db25-sec6">Selection Criteria</a></li>
+	<li style="margin-bottom:0;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#db25-faq">Frequently Asked Questions</a></li>
+</ol>
+</div>
+</div>
+
+
+
+<!-- Section 1 -->
+
+<div style="margin-bottom:60px">
+<h2 id="db25-sec1" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">What Is a DB25 DIN Rail Terminal Block?</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">A DB25 DIN rail terminal block takes a standard 25-pin D-sub connector and maps each pin to a dedicated, individually numbered terminal on a DIN rail module. One side accepts a DB25 plug or socket; the other side provides 25 labeled terminals for landing field wires with a screwdriver or spring-clamp tool.</p>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">Like its smaller counterparts (DB9 and RJ45 terminal blocks), it is <strong>purely passive</strong>. There is no signal conversion, no voltage level shifting, and no protocol intelligence. Pin 1 on the DB25 connects directly to Terminal 1. Pin 25 connects to Terminal 25. The module simply provides a convenient, organized access point to all 25 signal lines.</p>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">The primary advantage of a 25-pin breakout is managing <strong>high signal density</strong> in a single connector. Equipment that uses DB25 often sends multiple discrete I/O signals, multi-channel analog data, or a combination of power, ground, and data lines through one cable. Without a breakout module, accessing or troubleshooting any individual signal requires disassembling the connector or cutting into the cable harness.</p>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">With a DIN rail terminal block installed, a technician can probe any pin with a multimeter, swap a single wire, or add a signal tap - all without disturbing the remaining 24 connections.</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px; margin-bottom:20px; margin-top:30px">
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; flex:1; min-width:250px; padding:15px; text-align:center">
+<div style="align-items:center; background:#f8fafc; border-radius:6px; display:flex; justify-content:center; min-height:200px; padding:10px"><img alt="DB25 DIN rail terminal block with 25 screw terminals and male connector" loading="lazy" title="DB25 DIN Rail Terminal Block" src="/uploads/PLACEHOLDER-db25-din-rail-terminal-block.webp" /></div>
+
+<p style="color:#0f766e; font-size:14px; font-weight:bold; margin-bottom:0; margin-left:0; margin-right:0; margin-top:10px">DB25 DIN Rail Terminal Block: 25 Pins to 25 Terminals</p>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; flex:1; min-width:250px; padding:15px; text-align:center">
+<div style="align-items:center; background:#f8fafc; border-radius:6px; display:flex; justify-content:center; min-height:200px; padding:10px"><img alt="DB25 breakout module installed in industrial control cabinet on DIN rail" loading="lazy" title="DB25 Breakout in Control Cabinet" src="/uploads/PLACEHOLDER-db25-breakout-cabinet.webp" /></div>
+
+<p style="color:#0f766e; font-size:14px; font-weight:bold; margin-bottom:0; margin-left:0; margin-right:0; margin-top:10px">DB25 Breakout Module Installed in Control Cabinet</p>
+</div>
+</div>
+</div>
+
+
+<!-- Section 2: Pinout Reference -->
+
+<div style="margin-bottom:60px">
+<h2 id="db25-sec2" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">DB25 Pinout Reference</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">The DB25 connector has been used for many different protocols and applications over the decades. Below are two common pinout references: the legacy IEEE 1284 parallel port (still found in CNC DNC systems) and a general-purpose 25-pin signal assignment used by many industrial equipment manufacturers.</p>
+
+<h3 style="color:#0f766e; font-size:20px; margin-bottom:10px; margin-top:25px">Standard Parallel Port (IEEE 1284 / Centronics) Pinout</h3>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:8%"><span style="color:#ffffff">Pin</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:30%"><span style="color:#ffffff">Signal Name</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:20%"><span style="color:#ffffff">Direction</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:42%"><span style="color:#ffffff">Description</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>1</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">nStrobe</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data strobe (active low)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>2</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data 0</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data bit 0 (LSB)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>3</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data 1</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data bit 1</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>4</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data 2</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data bit 2</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>5</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data 3</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data bit 3</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>6</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data 4</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data bit 4</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>7</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data 5</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data bit 5</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>8</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data 6</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data bit 6</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>9</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data 7</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Data bit 7 (MSB)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>10</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">nAck</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Acknowledge (active low)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>11</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Busy</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Printer busy</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>12</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Paper Out</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Paper end signal</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>13</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Select</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Printer selected</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>14</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">nAutoFeed</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Auto line feed (active low)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>15</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">nError</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Error status (active low)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>16</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">nInit</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Initialize printer (active low)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>17</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">nSelectIn</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Select printer (active low)</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px"><strong>18-25</strong></td>
+			<td style="padding:11px 14px">GND</td>
+			<td style="padding:11px 14px">—</td>
+			<td style="padding:11px 14px">Signal ground (return lines)</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<h3 style="color:#0f766e; font-size:20px; margin-bottom:10px; margin-top:25px">General-Purpose 25-Pin Signal Assignment (Industrial Equipment)</h3>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:15px">Many CNC controllers, test instruments, and industrial devices use DB25 for custom I/O mapping. Below is a representative general-purpose assignment commonly seen on multi-axis motion controllers:</p>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:8%"><span style="color:#ffffff">Pin</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:25%"><span style="color:#ffffff">Typical Signal</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:8%"><span style="color:#ffffff">Pin</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:25%"><span style="color:#ffffff">Typical Signal</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>1</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 0 / Step X</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>14</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 7 / Dir X</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>2</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 1 / Step Y</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>15</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input 0 / Limit X</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>3</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 2 / Step Z</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>16</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input 1 / Limit Y</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>4</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 3 / Step A</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>17</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input 2 / Limit Z</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>5</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 4 / Dir Y</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>18</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">GND</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>6</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 5 / Dir Z</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>19</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">GND</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>7</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 6 / Dir A</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>20</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">GND</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>8</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 7 / Spindle Enable</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>21</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">GND</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>9</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Output 8 / Coolant On</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>22</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">GND</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>10</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input 3 / Home X</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>23</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">GND</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>11</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input 4 / Home Y</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>24</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">GND</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>12</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Input 5 / Home Z</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px"><strong>25</strong></td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">GND</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px"><strong>13</strong></td>
+			<td style="padding:11px 14px">Input 6 / E-Stop</td>
+			<td style="padding:11px 14px">—</td>
+			<td style="padding:11px 14px">—</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div style="background:#fff7ed; border-left:4px solid #ea580c; border-radius:4px; margin-bottom:20px; padding:15px">
+<p style="color:#9a3412; font-size:15px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong>⚠️ Critical warning:</strong> DB25 pinout is NOT standardized across all equipment. The tables above are reference examples only. CNC controllers (Mach3, LinuxCNC, Fanuc, Mitsubishi), test instruments, and legacy devices each define their own pin assignments. <strong>Always verify with the device documentation before wiring.</strong></p>
+</div>
+</div>
+
+
+<!-- Section 3: Wiring -->
+
+<div style="margin-bottom:60px">
+<h2 id="db25-sec3" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Wiring a DB25 Breakout Module: Step-by-Step</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">With 25 pins to manage, organization is critical. A single miswired pin can cause equipment damage, false alarms, or erratic motion on CNC machines. Follow this process:</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px; margin-bottom:30px">
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.02); flex:1; min-width:250px; padding:20px">
+<h3 style="color:#0056b3; font-size:18px; margin-bottom:10px; margin-top:0">Step 1: Document the pinout</h3>
+
+<ul style="color:#4b5563; font-size:14px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:15px" class="pro-ulli1">
+	<li>Obtain the exact pinout from the equipment manufacturer's datasheet</li>
+	<li>Identify signal type for each pin: digital output, digital input, analog, power, or ground</li>
+	<li>Note any pins that carry higher voltage or current (some DB25 ports carry 12V or 24V)</li>
+	<li>Create a wire map on paper or spreadsheet before touching any wires</li>
+</ul>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.02); flex:1; min-width:250px; padding:20px">
+<h3 style="color:#0056b3; font-size:18px; margin-bottom:10px; margin-top:0">Step 2: Prepare and label cables</h3>
+
+<ul style="color:#4b5563; font-size:14px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:15px" class="pro-ulli1">
+	<li>Use multi-conductor cable or individual wires rated for the signal voltage</li>
+	<li>Label each conductor with its terminal number BEFORE stripping</li>
+	<li>Strip conductor ends 8-10 mm for screw terminals, 10-12 mm for spring terminals</li>
+	<li>Use ferrules on stranded wire to prevent whiskers and ensure solid contact</li>
+</ul>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.02); flex:1; min-width:250px; padding:20px">
+<h3 style="color:#0056b3; font-size:18px; margin-bottom:10px; margin-top:0">Step 3: Wire systematically</h3>
+
+<ul style="color:#4b5563; font-size:14px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:15px" class="pro-ulli1">
+	<li>Wire ground pins first (typically pins 18-25 on parallel port applications)</li>
+	<li>Then wire output signals, followed by input signals</li>
+	<li>Tighten screw terminals to manufacturer-specified torque (typically 0.2-0.5 Nm)</li>
+	<li>Route signal wires and power wires in separate bundles where possible</li>
+</ul>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.02); flex:1; min-width:250px; padding:20px">
+<h3 style="color:#0056b3; font-size:18px; margin-bottom:10px; margin-top:0">Step 4: Verify and test</h3>
+
+<ul style="color:#4b5563; font-size:14px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:15px" class="pro-ulli1">
+	<li>Test continuity from each DB25 pin to its corresponding terminal with a multimeter</li>
+	<li>Check for shorts between adjacent terminals (common with 25 closely-spaced pins)</li>
+	<li>Verify ground continuity across all GND pins</li>
+	<li>Power up equipment and test each signal channel individually before running full operation</li>
+</ul>
+</div>
+</div>
+
+<div style="background:#f0fdf4; border-left:4px solid #16a34a; border-radius:4px; margin-bottom:25px; padding:15px">
+<p style="color:#166534; font-size:15px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong>Pro tip:</strong> For CNC breakout boards, test each axis step and direction signal individually before enabling motor power. An incorrect step/dir assignment can crash the machine into hard stops.</p>
+</div>
+</div>
+
+
+<!-- Section 4: Applications -->
+
+<div style="margin-bottom:60px">
+<h2 id="db25-sec4" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Applications: CNC, Test Equipment, Legacy Industrial Control</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">DB25 connectors remain in active use wherever equipment requires high pin-count single-connector interfaces. The terminal block breakout is most valuable in these scenarios:</p>
+
+<ul style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:25px; margin-top:0; padding-left:22px" class="pro-ulli1">
+	<li style="margin-bottom:8px;"><strong>CNC Machine Breakout Boards</strong> — Mach3, LinuxCNC, and other PC-based CNC controllers use DB25 parallel ports for step/direction signals to stepper and servo drives. A DIN rail terminal block provides clean, labeled access to all axis signals, limit switches, and spindle control lines.</li>
+	<li style="margin-bottom:8px;"><strong>Test and Measurement Equipment</strong> — Oscilloscopes, data loggers, signal generators, and DAQ systems often use DB25 for multi-channel analog or digital I/O. A breakout module allows quick probe access to individual channels without custom cable harnesses.</li>
+	<li style="margin-bottom:8px;"><strong>Legacy Parallel Port Devices</strong> — Industrial printers, label makers, and older PLC programming ports still use DB25 parallel connections. Terminal blocks simplify wiring when integrating legacy equipment into modern control cabinets.</li>
+	<li style="margin-bottom:8px;"><strong>Multi-Axis Motion Controllers</strong> — Servo amplifiers and multi-axis motion boards use DB25 to carry step, direction, enable, alarm, and encoder signals for multiple axes through a single connector.</li>
+	<li style="margin-bottom:8px;"><strong>PLC I/O Expansion</strong> — Some PLCs and remote I/O modules use DB25 connectors for discrete I/O expansion. A terminal block allows field wiring without specialized PLC cable assemblies.</li>
+	<li style="margin-bottom:8px;"><strong>Broadcast and Audio Equipment</strong> — Multi-channel audio interfaces, patch bays, and broadcast routing equipment use DB25 (often with Tascam or AES/EBU pinouts) for balanced audio signal distribution.</li>
+	<li style="margin-bottom:8px;"><strong>Signal Conditioning and Relay Boards</strong> — Custom relay boards and signal conditioning modules that aggregate multiple signals into a single DB25 cable for panel feed-through.</li>
+</ul>
+
+<div style="background:#f8fafc; border-left:4px solid #0f766e; border-radius:6px; margin-top:25px; padding:20px 25px">
+<h3 style="color:#0f766e; font-size:18px; margin-bottom:8px; margin-top:0">📚 Related: D-Sub Cable Assemblies</h3>
+
+<p style="color:#1f2937; font-size:15px; line-height:1.7; margin-bottom:0; margin-top:0">For pre-made DB25 cable assemblies with custom pinouts and lengths: <strong><a target="_blank" style="color:#0f766e; text-decoration:underline;" href="https://www.premier-cables.com/news/d-sub-cable-assemblies.html">D-Sub Cable Assemblies: Custom DB9, DB15, DB25 and DB37 Solutions</a></strong></p>
+</div>
+</div>
+
+
+<!-- Section 5: DB25 vs DB37 vs DB50 -->
+
+<div style="margin-bottom:60px">
+<h2 id="db25-sec5" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">DB25 vs DB37 vs DB50: Which Multi-Pin Connector Do You Need?</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">When your application requires more than 9 pins, D-sub connectors come in several standard sizes. Here is how they compare for DIN rail breakout applications:</p>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:18%"><span style="color:#ffffff">Feature</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:27%"><span style="color:#ffffff">DB25</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:27%"><span style="color:#ffffff">DB37</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:28%"><span style="color:#ffffff">DB50</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Pin count</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">25 pins</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">37 pins</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">50 pins</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Shell size</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">DB (standard)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">DC (larger)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">DD (largest standard)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">DIN rail module width</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">~45-55 mm</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">~60-70 mm</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">~80-90 mm</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Common applications</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">CNC, parallel port, test equipment, motion control</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Multi-axis servo drives, large PLC I/O, instrumentation</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">SCSI legacy, high-density I/O, custom systems</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Availability</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Very common (standard stock)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Common (may require lead time)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Less common (often custom order)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Cost</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Low</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Medium</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Higher</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px">When to choose</td>
+			<td style="padding:11px 14px">≤25 signals, standard CNC/test breakout</td>
+			<td style="padding:11px 14px">26-37 signals, multi-axis servo I/O</td>
+			<td style="padding:11px 14px">38-50 signals, legacy SCSI, high-density custom</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div style="background:#f0fdf4; border-left:4px solid #16a34a; border-radius:4px; margin-bottom:25px; padding:15px">
+<p style="color:#166534; font-size:15px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong>Recommendation:</strong> If your equipment uses a DB25 and you need more I/O, consider whether you actually need a DB37/DB50 upgrade or whether a second DB25 breakout module is simpler and more maintainable. Two DB25 modules are easier to troubleshoot than one DB50.</p>
+</div>
+</div>
+
+
+<!-- Section 6: Selection Criteria -->
+
+<div style="margin-bottom:60px">
+<h2 id="db25-sec6" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Selection Criteria</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">When specifying a DB25 DIN rail terminal block for your application, evaluate these factors:</p>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:25%"><span style="color:#ffffff">Criterion</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:35%"><span style="color:#ffffff">Options</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:40%"><span style="color:#ffffff">Notes</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Connector gender</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Male (plug) / Female (socket)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Must be opposite gender to device port</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Terminal type</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Screw / Spring-clamp / Push-in</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Spring resists vibration loosening; screw for heavier gauge</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Wire gauge range</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">0.14 - 1.5 mm² (26 - 16 AWG typical)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Verify against your cable conductor size</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Voltage rating</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">50V / 125V / 250V</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Must exceed maximum signal voltage on any pin</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Current rating per pin</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">1A / 2A / 3A</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Critical if any pin carries motor enable or power supply</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Shell material</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Metal (zinc alloy) / Plastic (PA66)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Metal provides EMI shielding and ground continuity</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Locking hardware</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Jack screws / Thumb screws / Clips</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Jack screws recommended for vibration environments</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Terminal labeling</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Pre-printed pin numbers / Blank / Custom</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Essential for 25-pin modules - reduces wiring errors</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px">DIN rail type</td>
+			<td style="padding:11px 14px">35 mm top-hat (EN 60715)</td>
+			<td style="padding:11px 14px">Standard for virtually all industrial cabinets</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div style="background:#f8fafc; border-left:4px solid #0f766e; border-radius:6px; margin-top:25px; padding:20px 25px">
+<h3 style="color:#0f766e; font-size:18px; margin-bottom:8px; margin-top:0">📚 Related: Terminal Type Comparison</h3>
+
+<p style="color:#1f2937; font-size:15px; line-height:1.7; margin-bottom:0; margin-top:0">Not sure whether to choose screw, spring, or push-in terminals? See our detailed comparison: <strong><a target="_blank" style="color:#0f766e; text-decoration:underline;" href="https://www.premier-cables.com/news/screw-vs-spring-vs-push-in-terminal.html">Screw vs Spring vs Push-in Terminal: Which to Choose for Industrial Cabinets</a></strong></p>
+</div>
+</div>
+
+
+<!-- FAQ Section -->
+
+<div style="background:#f8fafc; border-radius:8px; border:1px solid #e5e7eb; margin-bottom:60px; padding:35px 30px">
+<h2 id="db25-faq" style="border-bottom:2px solid #e5e7eb; color:#111827; font-size:26px; line-height:1.3; margin-bottom:25px; margin-top:0; padding-bottom:10px; scroll-margin-top:40px">Frequently Asked Questions</h2>
+
+<p style="margin-bottom:5px"><strong>What is the difference between DB25 and DB9 terminal blocks?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">The pin count: DB25 has 25 pins, DB9 has 9 pins. DB9 is primarily used for serial communication (RS-232/485/422), while DB25 is used for multi-signal breakout in CNC, test equipment, and legacy parallel port applications. Both use the same D-sub connector family and the same DIN rail mounting concept.</p>
+
+<p style="margin-bottom:5px"><strong>Can I use a DB25 terminal block for CNC step and direction signals?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">Yes - this is one of the most common applications. PC-based CNC software (Mach3, LinuxCNC, UCCNC) outputs step and direction pulses through the parallel port DB25 connector. A DIN rail terminal block provides clean, labeled access to all axis signals, limit switches, and spindle control outputs without soldering or crimping.</p>
+
+<p style="margin-bottom:5px"><strong>Is DB25 the same as a parallel port connector?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">The parallel port on PCs uses a DB25 female connector, but DB25 itself is not exclusively a parallel port connector. The same 25-pin D-sub housing is used for many other applications including multi-channel I/O, test equipment interfaces, and custom industrial connections. The pinout depends entirely on the equipment manufacturer.</p>
+
+<p style="margin-bottom:5px"><strong>How do I know if I need male or female DB25 terminal block?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:0; margin-top:0">Look at the port on your equipment. If the device has a DB25 female port (with socket holes), you need a male terminal block (with pins) to plug into it. If the device has a male port (with protruding pins), you need a female terminal block. The terminal block gender must be the opposite of the device port.</p>
+</div>
+<!-- Related Articles -->
+
+<div style="background:#ffffff; border:1px solid #e5e7eb; border-radius:8px; margin-bottom:40px; padding:25px 30px">
+<h3 style="color:#111827; font-size:20px; margin-bottom:15px; margin-top:0">📖 Related Articles in This Series</h3>
+
+<ul style="color:#1f2937; font-size:15px; line-height:1.9; margin-bottom:0; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/din-rail-interface-terminal-block-guide.html">DIN Rail Interface Terminal Blocks: Complete Guide for RJ45, DB9 and DB25</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/rj45-din-rail-terminal-block.html">RJ45 DIN Rail Terminal Block: Pinout, Wiring and Industrial Ethernet Use</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/db9-din-rail-terminal-block.html">DB9 DIN Rail Terminal Block for Serial Communication Wiring</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/screw-vs-spring-vs-push-in-terminal.html">Screw vs Spring vs Push-in Terminal: Which to Choose</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/din-rail-standard-en-60715.html">DIN Rail Mounting Standard: EN 50022 vs EN 60715 Explained</a></li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/d-sub-cable-assemblies.html">D-Sub Cable Assemblies: Custom DB9, DB15, DB25 and DB37 Solutions</a></li>
+</ul>
+</div>
+
+
+<!-- CTA Section -->
+
+<div style="background:#eff6ff; border-radius:8px; border:1px solid #bfdbfe; margin-bottom:60px; padding:35px 30px">
+<h2 style="color:#1e3a8a; font-size:24px; line-height:1.3; margin-bottom:15px; margin-top:0">Need a DB25 DIN Rail Terminal Block?</h2>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:15px; margin-top:0">Tell us your <strong>connector gender (male/female), terminal type (screw/spring), and application</strong>. Our team will confirm compatibility with your equipment and reply within 24 hours.</p>
+
+<ul style="color:#4b5563; font-size:15px; line-height:1.8; margin-bottom:20px; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li>Male and female DB25 versions in stock</li>
+	<li>Screw terminal and spring-clamp terminal options</li>
+	<li>Metal shell (EMI shielded) and plastic shell available</li>
+	<li>Custom labeling and pin mapping for OEM applications</li>
+	<li>Bulk pricing for system integrators and machine builders</li>
+</ul>
+
+<div><a target="_blank" style="display:inline-block; border:1px solid #0f766e; background-color:#0f766e; color:#ffffff; font-weight:bold; text-decoration:none; padding:10px 25px; border-radius:4px; font-size:15px; box-shadow:0 4px 10px rgba(15,118,110,0.2);" href="https://www.premier-cables.com/contact-us">Send Your Requirements →</a></div>
+</div>
+<!-- Contact Block -->
+
+<div style="background:#ffffff; border-radius:8px; border-top:4px solid #0f766e; border:1px solid #e5e7eb; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:30px; padding:35px 30px">
+<div style="color:#0f766e; font-size:13px; font-weight:700; letter-spacing:0.04em; margin-bottom:12px; text-transform:uppercase">📩 Contact Us</div>
+
+<h2 style="color:#111827; font-size:26px; line-height:1.3; margin-bottom:15px; margin-top:0">Source DB25 DIN Rail Terminal Blocks</h2>
+
+<p style="color:#444444; font-size:17px; line-height:1.8; margin-bottom:20px; margin-top:0"><strong>Premier Cable</strong> manufactures DB25 DIN rail interface modules for CNC, test equipment, and industrial multi-signal applications. Male and female connectors available. Standard pass-through and custom pin assignments supported.</p>
+
+<div style="color:#1f2937; display:flex; flex-wrap:wrap; font-size:16px; gap:15px 30px; line-height:1.8">
+<div><strong>Email:</strong> <a style="color:#0f766e; text-decoration:none; font-weight:bold;" href="mailto:sales03@premier-cable.net">sales03@premier-cable.net</a></div>
+
+<div><strong>WhatsApp:</strong> <a style="color:#0f766e; text-decoration:none; font-weight:bold;" href="https://wa.me/8618980808890">+86 189 8080 8890</a></div>
+
+<div><strong>Website:</strong> <a style="color:#0f766e; text-decoration:none; font-weight:bold;" href="https://www.premier-cables.com">www.premier-cables.com</a></div>
+</div>
+</div>
+<!-- Footer Meta -->
+
+<div style="border-top:1px solid #e5e7eb; color:#6b7280; font-size:14px; line-height:1.7; margin-top:30px; padding-top:20px">
+<p style="margin:0 0 6px 0"><strong>Author:</strong> [Engineer Name] - Product Engineer, Premier Cable</p>
+
+<p style="margin:0 0 6px 0"><strong>Reviewed by:</strong> [Senior Engineer Name] - Field Application Engineer</p>
+
+<p style="margin:0"><strong>Last Updated:</strong> May 2026</p>
+</div>
+</div>
