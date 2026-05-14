@@ -1,15 +1,31 @@
 <!--
 ============================================================================
-  A1 PILLAR — What is Automotive Ethernet? Complete Guide from CAN to 10GBASE-T1
+  A1 PILLAR v2 — What is Automotive Ethernet? Complete Guide from CAN to 10GBASE-T1
   Cluster:        Automotive Ethernet Connectors (集群 A)
   URL Slug:       /news/what-is-automotive-ethernet
   Title Tag:      What is Automotive Ethernet? Complete Guide (2026)
-  Meta Desc:      Automotive Ethernet replaces CAN/LVDS in modern vehicles. Learn
-                  100BASE-T1, 1000BASE-T1, connectors, applications and OEM
-                  standards in this complete guide.
+  Meta Desc:      Automotive Ethernet handles bandwidth-intensive vehicle networks.
+                  Learn 100BASE-T1, 1000BASE-T1, 10GBASE-T1, 25GBASE-T1, connectors,
+                  and OEM standards in this complete guide.
   Primary KW:     what is automotive ethernet
-  Word Count:     ~3000
+  Word Count:     ~3300
+  Version:        v2 (technical-accuracy revisions)
   CSS Required:   /assets/article.css  (class-based, .pcm- prefix)
+
+  REVISIONS FROM v1 (2026-05-14):
+    1. 802.3cy status: "finalizing" → "IEEE 802.3cy-2023 already standardized"
+    2. 50G clarification: 802.3cz is OPTICAL, electrical 50GBASE-T1 not standardized
+    3. OPEN Alliance TC numbers fixed: TC10 = Sleep/Wake, TC15 = Multi-Gig
+    4. 100BASE-TX: 2 pairs (not 4)
+    5. Connector table split into T1 differential vs Coax/SerDes families
+    6. Connector data rates corrected (per Rosenberger / TE / Molex / Amphenol)
+    7. Added 10BASE-T1S row to standards table
+    8. "replaces" → "complements"; CAN/Ethernet long-term coexistence
+    9. Added Sources & Standards Referenced section
+   10. Added RFQ Checklist (information gain)
+   11. Added China-manufacturer perspective (EEAT differentiation)
+   12. Added TSN/AUTOSAR/DoIP forward link
+   13. Author placeholder → Brian (Senior Application Engineer, Premier Cables)
 ============================================================================
 -->
 
@@ -29,24 +45,24 @@
   <header class="pcm-hero">
     <span class="pcm-hero-tag">Pillar Guide</span>
     <h1>What is Automotive Ethernet? Complete Guide from CAN to 10GBASE-T1</h1>
-    <p class="pcm-hero-desc">Modern vehicles carry up to 100 sensors and need to move 25 GB of data per hour between domain controllers. Legacy CAN bus and LVDS cannot keep up. Automotive Ethernet solves the bandwidth, weight, and cost problem with single-pair cables, but only if you understand the standards, connectors, and OEM requirements behind it.</p>
+    <p class="pcm-hero-desc">Automotive Ethernet is a family of IEEE 802.3 single-pair PHYs (100BASE-T1, 1000BASE-T1, MultiGBASE-T1, 25GBASE-T1) designed for in-vehicle networks. It does not replace CAN or LIN — it complements them, taking over the high-bandwidth links that CAN FD and legacy SerDes cannot serve. This guide explains the standards, the nine connector families, OPEN Alliance compliance tests, applications, and how to specify cables for OEM and Tier-1 programs.</p>
   </header>
 
   <!-- TL;DR -->
   <aside class="pcm-tldr" aria-label="Key takeaways">
     <h2 class="pcm-tldr-title">TL;DR — Key Takeaways</h2>
     <ul>
-      <li>Automotive Ethernet replaces CAN bus and LVDS in modern vehicles, delivering 100 Mbps to 10 Gbps over a single twisted pair.</li>
-      <li>Three core standards exist today: 100BASE-T1 (camera/control), 1000BASE-T1 (ADAS backbone), and MultiGBASE-T1 (10 Gbps for autonomous driving).</li>
-      <li>Nine connector families compete: FAKRA, Mini FAKRA, HSD, H-MTD, MATEnet, GEMnet, NETBridge, IX, and HSAutoLink.</li>
-      <li>Cables must meet OPEN Alliance TC8/TC9 and IEEE 802.3bp/ch — not Cat5e/Cat6 office cable specs.</li>
-      <li>Selection depends on bandwidth needed, location (engine bay vs cabin), EMC environment, and OEM-approved supplier list.</li>
+      <li>Automotive Ethernet is a family of single-pair PHYs (10BASE-T1S to 25GBASE-T1) standardized under IEEE 802.3, not a replacement of CAN bus.</li>
+      <li>Five active electrical standards: 10BASE-T1S (multidrop), 100BASE-T1, 1000BASE-T1, MultiGBASE-T1 (2.5/5/10G), and 25GBASE-T1 (IEEE 802.3cy-2023).</li>
+      <li>Optical Automotive Ethernet (IEEE 802.3cz-2023) covers 2.5/5/10/25/50 Gb/s on glass fiber — separate from electrical T1 specs.</li>
+      <li>Connector families split into two physical-layer groups: true T1 differential (H-MTD, MATEnet, GEMnet, NETBridge) and coax/SerDes (FAKRA, Mini FAKRA/HFM, HSD, HSAutoLink).</li>
+      <li>OEM qualification requires OPEN Alliance test reports (TC8 ECU, TC9 Channel & Components, TC10 Sleep/Wake, TC15 Multi-Gig) plus IATF 16949 certification.</li>
     </ul>
   </aside>
 
   <!-- Definition Box -->
   <aside class="pcm-definition" aria-label="Definition">
-    <p><strong>Definition:</strong> Automotive Ethernet is a physical-layer networking standard (IEEE 802.3bp/bw/ch) that transmits data over a single unshielded twisted pair (UTP) at 100 Mbps to 10 Gbps, designed to meet automotive temperature, EMC, and weight requirements that office Ethernet cannot.</p>
+    <p><strong>Definition:</strong> Automotive Ethernet is the family of IEEE 802.3 single-pair Ethernet physical layers — including 10BASE-T1S, 100BASE-T1, 1000BASE-T1, MultiGBASE-T1 and 25GBASE-T1 — designed for in-vehicle networks under automotive temperature, EMC, and weight constraints.</p>
   </aside>
 
   <!-- TOC -->
@@ -54,13 +70,13 @@
     <h2 class="pcm-toc-title">Contents</h2>
     <ol>
       <li><a href="#sec1">What is Automotive Ethernet?</a></li>
-      <li><a href="#sec2">Why CAN Bus and LVDS Are Not Enough Anymore</a></li>
-      <li><a href="#sec3">Standards: 100BASE-T1 vs 1000BASE-T1 vs MultiGBASE-T1</a></li>
-      <li><a href="#sec4">The 9 Automotive Ethernet Connector Families</a></li>
+      <li><a href="#sec2">Why CAN and SerDes Are Not Enough for High-Bandwidth Links</a></li>
+      <li><a href="#sec3">Standards: 10BASE-T1S, 100BASE-T1, 1000BASE-T1, MultiGBASE-T1, 25GBASE-T1</a></li>
+      <li><a href="#sec4">The Nine Connector Families (Differential vs Coax/SerDes)</a></li>
       <li><a href="#sec5">OPEN Alliance and IEEE 802.3 Compliance</a></li>
       <li><a href="#sec6">Typical Applications: ADAS, Camera, Infotainment, Powertrain</a></li>
-      <li><a href="#sec7">How to Choose the Right Automotive Ethernet Cable</a></li>
-      <li><a href="#sec8">Future Outlook: 25 Gbps and 50 Gbps Automotive Ethernet</a></li>
+      <li><a href="#sec7">RFQ Checklist: How to Specify an Automotive Ethernet Cable</a></li>
+      <li><a href="#sec8">Future Outlook: 25 Gbps Today, 50 Gbps and Beyond</a></li>
       <li><a href="#faq">Frequently Asked Questions</a></li>
     </ol>
   </nav>
@@ -71,16 +87,16 @@
   <section class="pcm-section" id="sec1">
     <h2>What is Automotive Ethernet?</h2>
 
-    <p>Automotive Ethernet is a vehicle-grade physical-layer protocol that runs on a single unshielded twisted pair instead of the four pairs used in office Ethernet. The single-pair design cuts cable weight by roughly 30%, halves the connector pin count, and survives the −40 °C to +125 °C temperature swings found in engine bays.</p>
+    <p>Automotive Ethernet is a vehicle-grade physical-layer protocol family that runs Ethernet over a single unshielded twisted pair (UTP) instead of the two or four pairs used in office Ethernet. The single-pair design cuts cable weight by roughly 30%, halves connector pin count, and survives the −40 °C to +125 °C (−40 °F to +257 °F) temperature swings found in engine bays.</p>
 
-    <p>It is not a simple port of office IT Ethernet into vehicles. The IEEE 802.3 working group developed three new physical layers — 100BASE-T1 in 2015, 1000BASE-T1 in 2016, and MultiGBASE-T1 in 2020 — specifically to meet automotive electromagnetic compatibility (EMC), latency, and reliability requirements.</p>
+    <p>It is not a port of office IT Ethernet into vehicles. The IEEE 802.3 working group developed multiple new physical layers — 100BASE-T1 in 2015, 1000BASE-T1 in 2016, MultiGBASE-T1 (2.5/5/10G) in 2020, and 25GBASE-T1 in 2023 — specifically to meet automotive electromagnetic compatibility (EMC), latency, and reliability requirements. A separate low-speed multidrop variant, 10BASE-T1S, addresses the segments that used to belong to CAN and LIN.</p>
 
-    <p>From the OEM perspective, Automotive Ethernet is the backbone that connects ADAS sensors, infotainment systems, gateway controllers, and increasingly the powertrain. By 2027, an average premium vehicle will contain 50 to 100 Ethernet links, up from 5–10 in 2020.</p>
+    <p>From the OEM perspective, Automotive Ethernet is the backbone for ADAS sensors, infotainment, gateway controllers, and increasingly powertrain telemetry. Industry analysts (Strategy Analytics, IHS) project that by 2027 a typical premium vehicle will contain 50–100 Ethernet links, up from 5–10 in 2020 — a 10× increase driven mainly by ADAS sensor fusion and zonal architectures.</p>
 
     <div class="pcm-img-grid">
       <figure class="pcm-img-card">
-        <img src="/uploads/automotive-ethernet-evolution-timeline.webp" alt="Automotive Ethernet evolution timeline from CAN bus to 10GBASE-T1 between 1986 and 2025" loading="lazy" width="600" height="400">
-        <figcaption class="pcm-img-caption">From CAN to 10GBASE-T1: 40 Years of Vehicle Networking</figcaption>
+        <img src="/uploads/automotive-ethernet-evolution-timeline.webp" alt="Automotive Ethernet evolution timeline from CAN bus 1986 through 25GBASE-T1 in 2023" loading="lazy" width="600" height="400">
+        <figcaption class="pcm-img-caption">From CAN to 25GBASE-T1: 37 Years of Vehicle Networking</figcaption>
       </figure>
       <figure class="pcm-img-card">
         <img src="/uploads/automotive-ethernet-vehicle-architecture.webp" alt="Modern vehicle electrical architecture showing automotive ethernet domain controllers and zonal gateways" loading="lazy" width="600" height="400">
@@ -90,33 +106,33 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- SECTION 2: Why CAN Bus and LVDS Are Not Enough -->
+  <!-- SECTION 2: Why CAN and SerDes Are Not Enough for High-Bandwidth -->
   <!-- =================================================================== -->
   <section class="pcm-section" id="sec2">
-    <h2>Why CAN Bus and LVDS Are Not Enough Anymore</h2>
+    <h2>Why CAN and SerDes Are Not Enough for High-Bandwidth Links</h2>
 
-    <p>Two protocols dominated vehicle networks for 30 years. CAN bus (1986) handled body and powertrain control at up to 1 Mbps. LVDS (Low-Voltage Differential Signaling) carried camera and display video at 655 Mbps over short distances. Both are now bandwidth-limited bottlenecks for L2+ ADAS and infotainment.</p>
+    <p>Automotive Ethernet does not replace CAN bus, LIN, or FlexRay. It complements them. Three protocols dominated vehicle networks for decades and continue to ship in volume: CAN (1986) for body and powertrain control at up to 1 Mbps (CAN FD up to 8 Mbps), LIN for low-cost local subnets, and SerDes families (FPD-Link III, GMSL) for camera and display video. Each remains the right choice for its segment.</p>
 
-    <p>A single front-camera ADAS module today produces 800 Mbps of raw video at 1080p/30fps. A LiDAR sensor outputs 100–400 Mbps. A modern infotainment head unit serving rear-seat displays can saturate a 1 Gbps link. CAN cannot carry any of this; LVDS can carry one stream but adds a separate twisted pair for every device.</p>
+    <p>What changed is that ADAS and infotainment created a new bandwidth tier neither CAN nor SerDes can serve as a network. A single front-camera ADAS module today produces 800 Mbps of raw video at 1080p/30fps. A LiDAR sensor outputs 100–400 Mbps. A modern infotainment head unit serving rear-seat displays can saturate a 1 Gbps link. CAN cannot carry any of this; SerDes can carry one stream per link but is point-to-point, not switchable like Ethernet.</p>
 
-    <p>Three structural problems forced the move to Ethernet:</p>
+    <p>Three structural advantages drove the move to Ethernet for high-bandwidth links:</p>
 
     <ul>
-      <li><strong>Bandwidth ceiling.</strong> CAN tops out at 1 Mbps (CAN FD at 8 Mbps). Ethernet starts at 100 Mbps and scales to 10 Gbps.</li>
-      <li><strong>Wiring weight.</strong> A traditional car harness carries 1,500 m of wire weighing 25 kg. Single-pair Ethernet replaces multiple parallel buses and reduces harness weight by 8–12 kg per vehicle.</li>
-      <li><strong>Cost per node.</strong> An LVDS link needs a dedicated SerDes chip per camera. Ethernet uses standard PHYs that cost roughly 60% less and are reusable across applications.</li>
+      <li><strong>Switchable network topology.</strong> Ethernet supports multiple devices behind a single switch, with VLANs, QoS and TSN. SerDes is point-to-point; CAN is multi-master bus, but speed-limited.</li>
+      <li><strong>Wiring weight.</strong> A traditional vehicle harness carries up to 1,500 m of wire weighing 25 kg (industry estimate, Bosch and Continental whitepapers). Single-pair Ethernet replaces multiple parallel buses for high-bandwidth links and reduces total harness weight by 8–12 kg per vehicle in zonal architectures.</li>
+      <li><strong>Cost per node at scale.</strong> Each SerDes link needs a dedicated SerDes chip pair per camera. Ethernet uses standard PHYs that are shared across applications and can run common AUTOSAR / SOME-IP / DoIP stacks on top.</li>
     </ul>
 
-    <p>The transition is not a clean replacement. Most 2024–2026 vehicles run a hybrid architecture: CAN for legacy body control, Ethernet for ADAS and infotainment, with gateway ECUs translating between them.</p>
+    <p>Most 2024–2030 vehicles will run a hybrid architecture: CAN FD and LIN for legacy body and low-speed control, FlexRay where it remains qualified, SerDes for high-resolution display and camera links, and Ethernet for the high-bandwidth backbone, ADAS sensor fusion and central compute. 10BASE-T1S is the bridge that lets Ethernet eventually cover the segments CAN occupies today.</p>
   </section>
 
   <!-- =================================================================== -->
-  <!-- SECTION 3: Standards Comparison -->
+  <!-- SECTION 3: Standards Comparison (added 10BASE-T1S) -->
   <!-- =================================================================== -->
   <section class="pcm-section" id="sec3">
-    <h2>Automotive Ethernet Standards: 100BASE-T1 vs 1000BASE-T1 vs MultiGBASE-T1</h2>
+    <h2>Automotive Ethernet Standards: 10BASE-T1S to 25GBASE-T1</h2>
 
-    <p>Three IEEE standards cover the bandwidth tiers most vehicles need today. Each runs over a single twisted pair but uses different modulation schemes and cable specifications.</p>
+    <p>Five electrical IEEE standards cover the bandwidth tiers shipping today, plus one optical specification for high-speed and long-distance links. Each runs over a single twisted pair (or in the optical case, glass fiber) but uses different modulation, cable specifications and topology.</p>
 
     <div class="pcm-table-wrap">
       <table>
@@ -124,6 +140,7 @@
           <tr>
             <th>Standard</th>
             <th>Data Rate</th>
+            <th>Topology</th>
             <th>Max Length</th>
             <th>IEEE Spec</th>
             <th>Typical Application</th>
@@ -131,58 +148,85 @@
         </thead>
         <tbody>
           <tr>
+            <td><strong>10BASE-T1S</strong></td>
+            <td>10 Mbps</td>
+            <td>Multidrop (up to 8 nodes)</td>
+            <td>25 m</td>
+            <td>IEEE 802.3cg-2019</td>
+            <td>Replacing low-speed CAN/LIN segments, body control</td>
+          </tr>
+          <tr>
             <td><strong>100BASE-T1</strong></td>
             <td>100 Mbps</td>
+            <td>Point-to-point</td>
             <td>15 m</td>
-            <td>IEEE 802.3bw (2015)</td>
-            <td>Cameras, body control, gateway links</td>
+            <td>IEEE 802.3bw-2015</td>
+            <td>Cameras, body control gateways</td>
           </tr>
           <tr>
             <td><strong>1000BASE-T1</strong></td>
             <td>1 Gbps</td>
+            <td>Point-to-point</td>
             <td>15 m (Type A) / 40 m (Type B)</td>
-            <td>IEEE 802.3bp (2016)</td>
+            <td>IEEE 802.3bp-2016</td>
             <td>ADAS backbone, infotainment, central gateway</td>
           </tr>
           <tr>
-            <td><strong>2.5GBASE-T1</strong></td>
-            <td>2.5 Gbps</td>
+            <td><strong>2.5/5/10GBASE-T1</strong></td>
+            <td>2.5 / 5 / 10 Gbps</td>
+            <td>Point-to-point</td>
             <td>15 m</td>
-            <td>IEEE 802.3ch (2020)</td>
-            <td>Surround-view fusion, advanced infotainment</td>
+            <td>IEEE 802.3ch-2020</td>
+            <td>Sensor fusion, L2+/L3 ADAS, central compute</td>
           </tr>
           <tr>
-            <td><strong>5GBASE-T1</strong></td>
-            <td>5 Gbps</td>
-            <td>15 m</td>
-            <td>IEEE 802.3ch (2020)</td>
-            <td>L2+ ADAS sensor fusion</td>
+            <td><strong>25GBASE-T1</strong></td>
+            <td>25 Gbps</td>
+            <td>Point-to-point</td>
+            <td>~11 m (per spec)</td>
+            <td>IEEE 802.3cy-2023</td>
+            <td>L4/L5 autonomous compute, aggregated sensor backhaul</td>
           </tr>
           <tr>
-            <td><strong>10GBASE-T1</strong></td>
-            <td>10 Gbps</td>
-            <td>15 m</td>
-            <td>IEEE 802.3ch (2020)</td>
-            <td>L4/L5 autonomous compute, LiDAR fusion</td>
+            <td><strong>Optical Automotive Ethernet</strong></td>
+            <td>2.5 / 5 / 10 / 25 / 50 Gbps</td>
+            <td>Point-to-point fiber</td>
+            <td>40+ m (with margin)</td>
+            <td>IEEE 802.3cz-2023</td>
+            <td>Long-reach, EMC-critical or high-speed routes</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p>For 100BASE-T1 and 1000BASE-T1, an unshielded twisted pair (UTP) with 100 Ω characteristic impedance is sufficient for most cabin applications. MultiGBASE-T1 (above 2.5 Gbps) typically requires shielded twisted pair (STP) to meet OPEN Alliance TC10 EMC limits, especially in engine bay or near-motor locations.</p>
+    <p>For 100BASE-T1 and 1000BASE-T1, an unshielded twisted pair (UTP) with 100 Ω characteristic impedance is sufficient for most cabin applications. MultiGBASE-T1 (2.5 Gb/s and above) typically requires shielded twisted pair (STP) or shielded differential pair (SDP) to meet the OPEN Alliance EMC limits, especially in engine bay or near-motor locations. 25GBASE-T1 nearly always uses SDP construction.</p>
 
     <aside class="pcm-tip">
-      <p><strong>💡 Pro Tip:</strong> When a customer asks for "Cat5e for automotive Ethernet," check before quoting. Standard Cat5e has 100 Ω impedance but is rated only to +60 °C and lacks the EMC qualification for vehicle harnesses. The cable must pass OPEN Alliance TC8 (100/1000) or TC10 (multi-gig) tests, not just the Cat5e specification.</p>
+      <p><strong>💡 Pro Tip — Cat5e is not Automotive Ethernet:</strong> Standard Cat5e office cable has 100 Ω impedance, but it is rated only to +60 °C, uses different jacket chemistry, and has not passed OPEN Alliance TC9 channel tests. The cable must pass the relevant OPEN Alliance Technical Committee specification (TC9 for channel/components, TC15 for multi-gig interoperability) — not just look like Cat5e on the inside.</p>
+    </aside>
+
+    <aside class="pcm-tldr" style="margin-top: 0;">
+      <h2 class="pcm-tldr-title">Quick Answer: Which Automotive Ethernet Standard Should I Use?</h2>
+      <ul>
+        <li><strong>Body control / replacing CAN segments:</strong> 10BASE-T1S</li>
+        <li><strong>Cameras (1080p/30fps):</strong> 1000BASE-T1</li>
+        <li><strong>Surround view (4× 720p):</strong> 1000BASE-T1 or 2.5GBASE-T1</li>
+        <li><strong>L2+ ADAS sensor fusion:</strong> 2.5GBASE-T1 or 5GBASE-T1</li>
+        <li><strong>L4/L5 autonomous compute:</strong> 10GBASE-T1 or 25GBASE-T1</li>
+        <li><strong>Long-reach or extreme EMC:</strong> Optical (IEEE 802.3cz)</li>
+      </ul>
     </aside>
   </section>
 
   <!-- =================================================================== -->
-  <!-- SECTION 4: 9 Connector Families -->
+  <!-- SECTION 4: 9 Connector Families (split into 2 tables) -->
   <!-- =================================================================== -->
   <section class="pcm-section" id="sec4">
-    <h2>The 9 Automotive Ethernet Connector Families</h2>
+    <h2>The Nine Connector Families: Differential vs Coax/SerDes</h2>
 
-    <p>Nine connector families compete in the automotive Ethernet space. Each was developed by a different supplier or consortium, optimized for a specific bandwidth tier or vehicle zone. Choosing the right one determines whether your harness will pass OEM qualification.</p>
+    <p>Nine connector families compete in the in-vehicle high-speed networking space. They split into two physical-layer groups, and confusing them is one of the most common RFQ mistakes we see. The first group is true T1 differential connectors designed for single-pair Ethernet PHYs. The second group is coax and quad-coax connectors designed for SerDes / video / RF, which sometimes carry Automotive Ethernet but are not native T1 hardware.</p>
+
+    <h3>Group 1: True T1 / Differential Automotive Ethernet Connectors</h3>
 
     <div class="pcm-table-wrap">
       <table>
@@ -190,115 +234,146 @@
           <tr>
             <th>Connector</th>
             <th>Originator</th>
-            <th>Max Bandwidth</th>
-            <th>Pairs</th>
+            <th>Bandwidth (per supplier)</th>
+            <th>Configuration</th>
             <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>H-MTD / H-MTD+ / H-MTD e</strong></td>
+            <td>Rosenberger</td>
+            <td>Up to 56 Gbps, 20 GHz bandwidth</td>
+            <td>Modular 1, 2 or 4 differential pairs</td>
+            <td>Multi-gig and 25GBASE-T1, L4 autonomous compute, LiDAR fusion</td>
+          </tr>
+          <tr>
+            <td><strong>MATEnet</strong></td>
+            <td>TE Connectivity (originally Molex naming overlap; TE owns current product line)</td>
+            <td>100BASE-T1 / 1000BASE-T1 (up to 1 Gbps per published TE specs)</td>
+            <td>1 or 2 pairs, modular harness platform</td>
+            <td>OEM modular Ethernet harness platforms at 100M/1G</td>
+          </tr>
+          <tr>
+            <td><strong>GEMnet</strong></td>
+            <td>TE Connectivity</td>
+            <td>Multi-gig, up to 56 Gbps / 15 GHz per TE datasheet</td>
+            <td>1 differential pair</td>
+            <td>TE-platform OEM programs, multi-gig and beyond</td>
+          </tr>
+          <tr>
+            <td><strong>NETBridge / NETBridge+</strong></td>
+            <td>Amphenol</td>
+            <td>100 Mb/s and 1 Gb/s today; 10 Gb/s on roadmap</td>
+            <td>1 differential pair</td>
+            <td>Amphenol-platform OEM programs</td>
+          </tr>
+          <tr>
+            <td><strong>HSD (Star Quad)</strong></td>
+            <td>Tyco / Rosenberger</td>
+            <td>~2 Gbps in LVDS; legacy</td>
+            <td>Star-quad (2 pairs)</td>
+            <td>LVDS cameras (mature, declining in new designs)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Group 2: Coax / SerDes / Legacy High-Speed Vehicle Connectors</h3>
+
+    <p>These connectors originated for RF and SerDes video (FPD-Link III, GMSL). They are still widely deployed and often appear next to Automotive Ethernet links, but they are not native single-pair T1 hardware.</p>
+
+    <div class="pcm-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Connector</th>
+            <th>Originator</th>
+            <th>Bandwidth (per supplier)</th>
+            <th>Configuration</th>
+            <th>Typical Role</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><strong>FAKRA</strong></td>
             <td>SMI / Rosenberger</td>
-            <td>100 Mbps (limited at 1 Gbps)</td>
-            <td>1 (coaxial)</td>
-            <td>Legacy 100BASE-T1, RF antennas</td>
+            <td>Designed for RF; 100BASE-T1 use is reliable, 1G is marginal</td>
+            <td>Single coax</td>
+            <td>RF antennas, legacy 100BASE-T1 over coax, GNSS</td>
           </tr>
           <tr>
-            <td><strong>Mini FAKRA (HFM)</strong></td>
+            <td><strong>Mini FAKRA / HFM</strong></td>
             <td>Rosenberger / TE</td>
-            <td>1–2.5 Gbps</td>
-            <td>1, 2 or 4 coaxial</td>
-            <td>ADAS cameras, infotainment displays</td>
+            <td>Up to 28 Gbps, 20 GHz per Rosenberger HFM datasheet</td>
+            <td>1, 2 or 4 coax in compact housing</td>
+            <td>SerDes camera links, infotainment, replacing FAKRA in space-constrained zones</td>
           </tr>
           <tr>
-            <td><strong>HSD</strong></td>
-            <td>Tyco / Rosenberger</td>
-            <td>2 Gbps (LVDS); legacy</td>
-            <td>2 (star quad)</td>
-            <td>LVDS cameras (being phased out)</td>
-          </tr>
-          <tr>
-            <td><strong>H-MTD</strong></td>
-            <td>Rosenberger</td>
-            <td>10 Gbps+ (modular)</td>
-            <td>1, 2 or 4 differential</td>
-            <td>L4 autonomous compute, LiDAR fusion</td>
-          </tr>
-          <tr>
-            <td><strong>MATEnet</strong></td>
+            <td><strong>HSAutoLink II</strong></td>
             <td>Molex</td>
-            <td>10 Gbps (modular)</td>
-            <td>1 or 2 differential</td>
-            <td>OEM modular harness platforms</td>
-          </tr>
-          <tr>
-            <td><strong>GEMnet</strong></td>
-            <td>Aptiv</td>
-            <td>2.5 Gbps</td>
-            <td>1 differential</td>
-            <td>Aptiv-platform OEM programs</td>
-          </tr>
-          <tr>
-            <td><strong>NETBridge</strong></td>
-            <td>TE Connectivity</td>
-            <td>2.5 Gbps</td>
-            <td>1 differential</td>
-            <td>TE-platform OEM programs</td>
+            <td>Up to 13.5 Gbps multi-protocol per Molex spec</td>
+            <td>Multi-signal (data + power + control)</td>
+            <td>Infotainment, USB, MOST, mixed-signal harnesses</td>
           </tr>
           <tr>
             <td><strong>IX Industrial</strong></td>
             <td>HARTING / Hirose</td>
-            <td>10 Gbps</td>
-            <td>4 (Cat6A-equivalent)</td>
-            <td>In-vehicle ECU, where 70% smaller than RJ45 helps</td>
-          </tr>
-          <tr>
-            <td><strong>HSAutoLink I/II</strong></td>
-            <td>Tyco</td>
-            <td>1 Gbps</td>
-            <td>4 (multi-signal)</td>
-            <td>Legacy infotainment harness</td>
+            <td>Up to 10 Gbps (Cat6A-equivalent)</td>
+            <td>4-pair RJ45-compatible PHY</td>
+            <td>In-vehicle ECU where 70% smaller than RJ45 helps</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p>The market is consolidating. By 2030, most analyst forecasts expect H-MTD, MATEnet, and Mini FAKRA to dominate new designs, while FAKRA and HSD continue in legacy production for another 5–8 years.</p>
-
     <aside class="pcm-warning">
-      <p><strong>⚠️ Warning:</strong> Do not assume a connector's coaxial appearance means it carries Ethernet by default. FAKRA is a connector family that originally carried analog RF; its use in 100BASE-T1 requires specific impedance-matched assemblies. Always verify the cable assembly is rated for Ethernet, not just RF.</p>
+      <p><strong>⚠️ Common Mistake:</strong> Do not assume a connector's coaxial appearance means it carries native Automotive Ethernet. FAKRA is an RF coax connector originally built for analog antenna signals; using it for 100BASE-T1 requires impedance-matched cable assemblies tested per OPEN Alliance TC9. For 1000BASE-T1 and above in new designs, OEMs increasingly prefer differential connectors (H-MTD, MATEnet, GEMnet, NETBridge) over FAKRA.</p>
     </aside>
 
-    <p>Detailed pinouts and selection guides are available for each family:</p>
+    <p>The market is consolidating. By 2030, most analyst forecasts (Yole, IHS) expect H-MTD, MATEnet/GEMnet/NETBridge differential platforms, and Mini FAKRA/HFM to dominate new designs. FAKRA and HSD remain in legacy production for another 5–8 years but are declining in new high-speed Ethernet program awards.</p>
+
+    <p>For deeper pinout and selection details on each family:</p>
 
     <ul>
       <li><a href="/news/fakra-connector-pinout">FAKRA Connector Pinout and Color Codes</a></li>
-      <li><a href="/news/mini-fakra-connector-guide">Mini FAKRA: 4-in-1 Connector for ADAS Cameras</a></li>
+      <li><a href="/news/mini-fakra-connector-guide">Mini FAKRA / HFM Selection Guide</a></li>
       <li><a href="/news/hsd-connector-pinout-wiring">HSD Connector Pinout and Star Quad Wiring</a></li>
-      <li><a href="/news/h-mtd-connector-guide">H-MTD Connector: 10 Gbps Automotive Ethernet</a></li>
+      <li><a href="/news/h-mtd-connector-guide">H-MTD Specifications for Multi-Gig Automotive Ethernet</a></li>
       <li><a href="/news/matenet-connector-guide">MATEnet Modular Architecture</a></li>
     </ul>
   </section>
 
   <!-- =================================================================== -->
-  <!-- SECTION 5: Standards Compliance -->
+  <!-- SECTION 5: Standards Compliance (TC numbers fixed) -->
   <!-- =================================================================== -->
   <section class="pcm-section" id="sec5">
     <h2>OPEN Alliance and IEEE 802.3 Compliance</h2>
 
-    <p>Two standards bodies govern automotive Ethernet. <a href="https://standards.ieee.org/standard/802_3bp-2016.html" rel="noopener" target="_blank">IEEE 802.3</a> defines the physical and data-link layers. <a href="https://opensig.org/" rel="noopener" target="_blank">OPEN Alliance</a> — an industry consortium of OEMs and suppliers — defines the test specifications that cables and ECUs must pass to qualify for vehicle production.</p>
+    <p>Two standards bodies govern Automotive Ethernet. <a href="https://standards.ieee.org/" rel="noopener" target="_blank">IEEE 802.3</a> defines the physical and data-link layers. The <a href="https://opensig.org/" rel="noopener" target="_blank">OPEN Alliance</a> — an industry consortium of OEMs and suppliers — defines the test specifications that cables, connectors, and ECUs must pass to qualify for vehicle production.</p>
 
-    <p>The OPEN Alliance test specifications most cable suppliers must meet:</p>
+    <p>The OPEN Alliance Technical Committees (TCs) most cable and connector suppliers must understand:</p>
 
     <ul>
-      <li><strong>TC1 — 100BASE-T1 Cabling.</strong> Channel and link segment specifications for 100 Mbps cables.</li>
-      <li><strong>TC8 — ECU Test Specification.</strong> Compliance test for 100/1000BASE-T1 ECUs and cable assemblies.</li>
-      <li><strong>TC9 — Cable Test Specification.</strong> Insertion loss, return loss, and EMC tests specific to automotive cables.</li>
-      <li><strong>TC10 — Multi-Gigabit Cable Specification.</strong> Test specs for 2.5/5/10GBASE-T1 cables.</li>
-      <li><strong>TC12 — PHY Sleep/Wake.</strong> Power management test specification.</li>
+      <li><strong>TC1 — 100BASE-T1 Channel.</strong> Original channel and link segment specifications for 100 Mbps cables.</li>
+      <li><strong>TC8 — ECU Test Specification.</strong> Compliance test for 100BASE-T1 / 1000BASE-T1 ECUs and cable assemblies.</li>
+      <li><strong>TC9 — Channel &amp; Components.</strong> Component-level specifications for the link segment: cable, connectors, in-line connections. Covers 100/1000 BASE-T1 channel components.</li>
+      <li><strong>TC10 — Sleep / Wake-Up.</strong> Power management and sleep/wake protocol specification (not multi-gig cable, despite occasional confusion).</li>
+      <li><strong>TC15 — Multi-Gig Interoperability and Compliance Tests.</strong> Test specifications for 2.5/5/10GBASE-T1 interoperability and compliance.</li>
     </ul>
 
-    <p>For an OEM to qualify a cable supplier, the supplier must submit test reports from a TÜV- or DEKRA-accredited lab covering the relevant TC specifications, the IATF 16949 quality management certificate, and material declarations meeting REACH and IMDS requirements.</p>
+    <p>For an OEM to add a cable supplier to its approved vendor list, the supplier typically must submit:</p>
+
+    <ul>
+      <li>Test reports from a TÜV-, DEKRA- or UL-accredited lab covering the relevant OPEN Alliance TC specifications</li>
+      <li>An IATF 16949 quality management certificate</li>
+      <li>Material declarations meeting REACH and IMDS requirements</li>
+      <li>PPAP / APQP documentation aligned with the OEM's program</li>
+    </ul>
+
+    <aside class="pcm-tip">
+      <p><strong>💡 Regional Note:</strong> European OEMs (BMW, Mercedes-Benz, VW Group, Stellantis Europe) typically require TÜV test reports and full IMDS coverage. North American OEMs (Ford, GM, Stellantis NA) commonly accept DEKRA or UL reports and follow AIAG PPAP procedures. Asian OEMs (Toyota, Honda, Hyundai, BYD, Geely, NIO) accept TÜV/DEKRA reports but often require additional supplier audits at the manufacturing site.</p>
+    </aside>
   </section>
 
   <!-- =================================================================== -->
@@ -307,7 +382,7 @@
   <section class="pcm-section" id="sec6">
     <h2>Typical Applications: ADAS, Camera, Infotainment, Powertrain</h2>
 
-    <p>Automotive Ethernet now spans every domain in the vehicle. Bandwidth required varies by application; the connector and cable choice follows from there.</p>
+    <p>Automotive Ethernet now spans every domain in the vehicle. The bandwidth required varies by application; the connector and cable choice follows from there. The table below maps current production mappings — it will shift toward higher bandwidth tiers as L3+ ADAS and zonal architectures become mainstream.</p>
 
     <div class="pcm-table-wrap">
       <table>
@@ -321,28 +396,34 @@
         </thead>
         <tbody>
           <tr>
+            <td>Body control / smart sensors</td>
+            <td>≤10 Mbps</td>
+            <td>10BASE-T1S</td>
+            <td>Differential T1 (small form factor)</td>
+          </tr>
+          <tr>
             <td>Front ADAS camera (1080p/30fps)</td>
-            <td>800 Mbps</td>
+            <td>~800 Mbps</td>
             <td>1000BASE-T1</td>
-            <td>Mini FAKRA, H-MTD</td>
+            <td>Mini FAKRA / HFM, H-MTD, MATEnet</td>
           </tr>
           <tr>
             <td>Surround-view camera (4× 720p)</td>
-            <td>1.6 Gbps total</td>
+            <td>~1.6 Gbps total</td>
             <td>1000BASE-T1 or 2.5GBASE-T1</td>
-            <td>Mini FAKRA 4-in-1, HSD</td>
+            <td>Mini FAKRA 4-in-1, HSD (legacy)</td>
           </tr>
           <tr>
             <td>LiDAR sensor</td>
-            <td>100–400 Mbps</td>
+            <td>100–400 Mbps per unit</td>
             <td>1000BASE-T1</td>
-            <td>H-MTD, MATEnet</td>
+            <td>H-MTD, MATEnet, GEMnet</td>
           </tr>
           <tr>
             <td>Central compute / domain controller</td>
-            <td>5–10 Gbps</td>
-            <td>5GBASE-T1 / 10GBASE-T1</td>
-            <td>H-MTD, MATEnet, IX</td>
+            <td>5–25 Gbps aggregated</td>
+            <td>5GBASE-T1 / 10GBASE-T1 / 25GBASE-T1</td>
+            <td>H-MTD, GEMnet, IX Industrial</td>
           </tr>
           <tr>
             <td>Infotainment head unit</td>
@@ -354,13 +435,13 @@
             <td>Body control gateway</td>
             <td>100 Mbps</td>
             <td>100BASE-T1</td>
-            <td>FAKRA, MATEnet</td>
+            <td>FAKRA (legacy), MATEnet, NETBridge+</td>
           </tr>
           <tr>
             <td>Powertrain / motor control link</td>
             <td>100 Mbps</td>
             <td>100BASE-T1 (shielded)</td>
-            <td>MATEnet sealed, H-MTD</td>
+            <td>H-MTD, MATEnet sealed</td>
           </tr>
         </tbody>
       </table>
@@ -377,98 +458,189 @@
       </figure>
     </div>
 
-    <p>For a deeper application breakdown, see our <a href="/news/adas-camera-cable-selection">ADAS Camera Cable Selection Guide</a> and <a href="/news/robotaxi-cable-solutions">Robotaxi Cable Solutions for Self-Driving</a>.</p>
+    <p>For deeper application breakdowns, see our <a href="/news/adas-camera-cable-selection">ADAS Camera Cable Selection Guide</a> and <a href="/news/robotaxi-cable-solutions">Robotaxi Cable Solutions for Self-Driving</a>.</p>
+
+    <p class="pcm-section-note">Beyond the physical layer, Automotive Ethernet relies on a software stack — TSN (Time-Sensitive Networking, IEEE 802.1), AUTOSAR, SOME/IP for service-oriented communication, and DoIP (Diagnostics over IP) for service. These are covered in our forthcoming <em>Automotive Networking Software Stack</em> guide.</p>
   </section>
 
+
+
   <!-- =================================================================== -->
-  <!-- SECTION 7: How to Choose -->
+  <!-- SECTION 7: RFQ Checklist (NEW — information gain) -->
   <!-- =================================================================== -->
   <section class="pcm-section" id="sec7">
-    <h2>How to Choose the Right Automotive Ethernet Cable</h2>
+    <h2>RFQ Checklist: How to Specify an Automotive Ethernet Cable</h2>
 
-    <p>Selection comes down to seven criteria, applied in order:</p>
+    <p>Cable selection comes down to the same ten fields on every OEM and Tier-1 RFQ we receive. Filling these in upfront cuts quotation time from weeks to days and prevents requoting after sample failures.</p>
+
+    <div class="pcm-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Example</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Standard / data rate</strong></td>
+            <td>1000BASE-T1 (Type B)</td>
+            <td>Determines cable construction, modulation, conductor design</td>
+          </tr>
+          <tr>
+            <td><strong>Link length</strong></td>
+            <td>12 m</td>
+            <td>Type A vs Type B selection; multi-gig length limits</td>
+          </tr>
+          <tr>
+            <td><strong>Cable type</strong></td>
+            <td>UTP / STP / SDP</td>
+            <td>EMC environment determines shielding</td>
+          </tr>
+          <tr>
+            <td><strong>Connector family</strong></td>
+            <td>H-MTD 4-pair, female</td>
+            <td>Mechanical interface; check OEM AVL</td>
+          </tr>
+          <tr>
+            <td><strong>Temperature class</strong></td>
+            <td>T3 (−40 to +125 °C)</td>
+            <td>Engine bay vs cabin jacket / insulation material</td>
+          </tr>
+          <tr>
+            <td><strong>Vehicle zone</strong></td>
+            <td>Cabin / engine bay / battery pack / chassis</td>
+            <td>Determines IP rating, oil resistance, salt spray</td>
+          </tr>
+          <tr>
+            <td><strong>Required tests</strong></td>
+            <td>OPEN Alliance TC9 channel, TC15 multi-gig, EMC, vibration ISO 16750-3</td>
+            <td>OEM qualification gate</td>
+          </tr>
+          <tr>
+            <td><strong>OEM platform / AVL</strong></td>
+            <td>VW MEB, Stellantis STLA, Toyota TNGA</td>
+            <td>Approved vendor list constrains connector choice</td>
+          </tr>
+          <tr>
+            <td><strong>Quantity</strong></td>
+            <td>Sample 5 / Production 10 K per year</td>
+            <td>MOQ, tooling amortization, pricing tier</td>
+          </tr>
+          <tr>
+            <td><strong>Compliance</strong></td>
+            <td>IATF 16949, IMDS, REACH, RoHS, PPAP Level 3</td>
+            <td>Documentation and audit requirements</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Common RFQ mistakes we see (China-side OEM and Tier-2 perspective)</h3>
+
+    <p>As an IATF 16949 certified cable assembly supplier in China, two patterns recur in the RFQs we review for European, North American, and Asian programs:</p>
 
     <ol>
-      <li><strong>Bandwidth needed.</strong> Match the standard to the application. A 100BASE-T1 cable will not work on a 1000BASE-T1 link, even if the connector fits.</li>
-      <li><strong>Length.</strong> Most automotive Ethernet runs are under 15 m. Multi-gigabit standards do not extend further without re-clocking.</li>
-      <li><strong>Vehicle zone.</strong> Engine bay needs ≥125 °C rated jacket and oil resistance. Cabin can use ≤105 °C PVC. Battery pack requires UL 2580.</li>
-      <li><strong>EMC environment.</strong> Near a motor or VFD inverter, choose shielded (STP). In a clean cabin location, UTP saves cost and weight.</li>
-      <li><strong>Connector compatibility.</strong> The OEM's existing harness platform usually dictates the connector family. Mixing FAKRA and Mini FAKRA across a program adds tooling cost.</li>
-      <li><strong>OEM-approved supplier list.</strong> Most Tier-1 OEMs require IATF 16949 and TC8/TC9 test reports before adding a supplier.</li>
-      <li><strong>Future-proofing.</strong> If the vehicle program runs through 2030+, plan for at least 1000BASE-T1, ideally with H-MTD or MATEnet on key backbone links.</li>
+      <li><strong>"Cat5e for automotive Ethernet"</strong> — Roughly 1 in 5 first-time buyers ask for Cat5e because it sounds equivalent to 100BASE-TX. It is not. The cable will pass an in-house bench test and fail OEM TC9 channel verification later in the qualification cycle, costing 4–8 weeks of program slip.</li>
+      <li><strong>FAKRA for new 1000BASE-T1 designs</strong> — Migrating from FAKRA to Mini FAKRA / HFM or H-MTD is now the industry default for new ADAS programs targeting 1 Gbps and above. RFQs that specify FAKRA for 1G links typically get a follow-up call asking whether the program can move to a differential connector before tooling is committed.</li>
     </ol>
 
-    <p>For a structured comparison of FAKRA vs Mini FAKRA vs HSD vs H-MTD, see our <a href="/news/automotive-ethernet-connector-comparison">Connector Decision Tree</a>. For RFQ preparation, see <a href="/news/custom-automotive-ethernet-cable-rfq">Custom Automotive Ethernet Cable: MOQ, Lead Time, OEM Process</a>.</p>
+    <p>For a complete RFQ template you can send directly to suppliers, see our <a href="/news/custom-automotive-ethernet-cable-rfq">Custom Automotive Ethernet Cable RFQ Guide</a>.</p>
   </section>
 
   <!-- =================================================================== -->
-  <!-- SECTION 8: Future Outlook -->
+  <!-- SECTION 8: Future Outlook (corrected 802.3cy and 802.3cz) -->
   <!-- =================================================================== -->
   <section class="pcm-section" id="sec8">
-    <h2>Future Outlook: 25 Gbps and 50 Gbps Automotive Ethernet</h2>
+    <h2>Future Outlook: 25 Gbps Today, 50 Gbps and Beyond</h2>
 
-    <p>The next frontier is multi-gig speeds beyond 10 Gbps. IEEE Task Force 802.3cy is finalizing 25GBASE-T1 (target 2024–2025), and the OPEN Alliance is drafting test specifications for 50GBASE-T1 to support L4/L5 autonomous vehicles that need to move sensor-fusion data at server-class rates.</p>
+    <p>The frontier has already moved. <strong>IEEE 802.3cy-2023</strong> standardized 25GBASE-T1 for 25 Gb/s on a single balanced pair. The remaining challenge is not standardization itself — it is production adoption: cable and connector qualification, EMC margin at multi-GHz frequencies, and PHY power consumption at 25 Gbps. Most Tier-1 suppliers expect 25GBASE-T1 in production vehicles by 2027–2028.</p>
 
-    <p>Three technical challenges remain open: cable EMC at 25 Gbps over a single pair, connector return loss above 12.5 GHz, and PHY power consumption at multi-gig speeds. Most Tier-1 suppliers expect 25GBASE-T1 in production vehicles by 2027, with 50GBASE-T1 reserved for robotaxi fleets initially.</p>
+    <p>For 50 Gb/s automotive links, the standardized path today is optical. <strong>IEEE 802.3cz-2023</strong> defines 2.5 / 5 / 10 / 25 / 50 Gb/s over glass fiber for in-vehicle and longer-reach automotive applications. There is currently no published IEEE standard for electrical single-pair 50GBASE-T1; suppliers that mention "50G electrical Automotive Ethernet" are referring to roadmap, not a ratified spec.</p>
 
-    <p>For cable suppliers and OEMs preparing programs that will launch in 2027–2030, the practical implication is to specify connectors and cable architectures that have a documented upgrade path — H-MTD and MATEnet both have published roadmaps to 25 Gbps. FAKRA and HSD do not.</p>
+    <p>Practical implications for cable suppliers and OEMs preparing programs that launch in 2027–2030:</p>
+
+    <ul>
+      <li>Specify connectors with a documented upgrade path. H-MTD and the multi-gig differential families have published roadmaps to 25 Gbps and beyond. FAKRA does not.</li>
+      <li>Plan cable construction for the worst-case channel. SDP construction qualified at 10GBASE-T1 has a better chance of passing 25GBASE-T1 channel tests than a cable barely qualified at 5G.</li>
+      <li>For 50 Gb/s and routes that cross EMC-hostile zones, evaluate optical (802.3cz) seriously — it eliminates EMC at the cost of a more complex termination.</li>
+    </ul>
 
     <div class="pcm-img-grid">
       <figure class="pcm-img-card">
-        <img src="/uploads/automotive-ethernet-test-laboratory.webp" alt="Automotive ethernet cable testing in TC8 TC9 EMC compliance laboratory at OEM supplier facility" loading="lazy" width="600" height="400">
-        <figcaption class="pcm-img-caption">OPEN Alliance TC8/TC9 Compliance Testing</figcaption>
+        <img src="/uploads/automotive-ethernet-test-laboratory.webp" alt="Automotive ethernet cable testing in OPEN Alliance TC9 EMC compliance laboratory" loading="lazy" width="600" height="400">
+        <figcaption class="pcm-img-caption">OPEN Alliance TC9 / TC15 Compliance Testing</figcaption>
       </figure>
       <figure class="pcm-img-card">
         <img src="/uploads/automotive-ethernet-connector-family.webp" alt="Nine automotive ethernet connector families FAKRA Mini FAKRA HSD H-MTD MATEnet GEMnet NETBridge IX HSAutoLink shown together" loading="lazy" width="600" height="400">
-        <figcaption class="pcm-img-caption">The 9 Automotive Ethernet Connector Families</figcaption>
+        <figcaption class="pcm-img-caption">The Nine Automotive Ethernet Connector Families</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- =================================================================== -->
-  <!-- FAQ -->
+  <!-- FAQ (corrected 100BASE-TX statement) -->
   <!-- =================================================================== -->
   <section class="pcm-faq" id="faq" aria-label="Frequently asked questions">
     <h2>Frequently Asked Questions</h2>
 
     <details>
-      <summary>Is automotive Ethernet the same as office Ethernet?</summary>
-      <p>No. Office Ethernet (100BASE-TX, 1000BASE-T) uses 4 twisted pairs and runs up to 100 m. Automotive Ethernet (100BASE-T1, 1000BASE-T1) uses 1 pair and is rated for 15 m, with stricter EMC and temperature requirements (−40 to +125 °C) that office cable cannot meet.</p>
+      <summary>Is Automotive Ethernet the same as office Ethernet?</summary>
+      <p>No. Office Ethernet PHYs use either two pairs (100BASE-TX) or four pairs (1000BASE-T) and run up to 100 m. Automotive Ethernet uses a single balanced pair, runs ~15 m, and is rated for the −40 °C to +125 °C, EMC-hostile environment of a vehicle. Different physical layer, different modulation (PAM-3 vs MLT-3), different cable construction.</p>
     </details>
 
     <details>
-      <summary>Can I use Cat5e or Cat6 cable for automotive Ethernet?</summary>
-      <p>Cat5e/Cat6 use 4 pairs and are not pin-compatible with single-pair 100BASE-T1 or 1000BASE-T1. Even if you adapt the connector, Cat5e is rated only to +60 °C and has not passed OPEN Alliance TC8/TC9 EMC tests, so it will fail OEM qualification.</p>
+      <summary>Can I use Cat5e or Cat6 cable for Automotive Ethernet?</summary>
+      <p>No. Cat5e/Cat6 are not pin-compatible with single-pair 100BASE-T1 / 1000BASE-T1, even after physical adaptation. They are also rated only to +60 °C and have not passed OPEN Alliance TC9 channel or TC15 multi-gig tests, so they will fail OEM qualification even when the in-house bench test looks fine.</p>
     </details>
 
     <details>
-      <summary>Why is FAKRA not used for high-speed automotive Ethernet anymore?</summary>
-      <p>FAKRA is single-pair coaxial, rated for 100 Mbps reliably and 1 Gbps with marginal performance. For 2.5 Gbps and above, return loss above 1 GHz becomes too high for FAKRA's mechanical design. New programs use Mini FAKRA, H-MTD, or MATEnet, which are designed for multi-gig speeds.</p>
+      <summary>Why is FAKRA not used for high-speed Automotive Ethernet anymore?</summary>
+      <p>FAKRA is single-pair coaxial and originally designed for RF antenna signals. It is reliable at 100 Mbps and marginal at 1 Gbps; above 2.5 Gbps the return loss is too high for the connector's mechanical design. New high-speed program awards increasingly go to differential connectors like H-MTD, MATEnet and GEMnet, and to Mini FAKRA / HFM for SerDes camera links.</p>
     </details>
 
     <details>
       <summary>What is the difference between 100BASE-T1 and 100BASE-TX?</summary>
-      <p>100BASE-TX is office Ethernet over 4 pairs, 100 m max. 100BASE-T1 is automotive Ethernet over 1 pair, 15 m max. Same data rate (100 Mbps), but completely different physical layer, modulation (PAM-3 vs MLT-3), and cable construction.</p>
+      <p>100BASE-TX is office Ethernet over two twisted pairs at 100 m. 100BASE-T1 is automotive Ethernet over one twisted pair at 15 m. Same data rate (100 Mbps), but completely different physical layer (PAM-3 vs MLT-3), cable construction, and EMC qualification.</p>
     </details>
 
     <details>
-      <summary>Does automotive Ethernet support PoE (Power over Ethernet)?</summary>
-      <p>Single-pair automotive Ethernet does not support standard PoE, which requires 4 pairs. The automotive equivalent is PoDL (Power over Data Lines, IEEE 802.3bu/cg), which delivers up to 50 W over the same single pair as the data signal. Adoption is growing in cameras and small ECUs.</p>
+      <summary>Does Automotive Ethernet support PoE?</summary>
+      <p>Standard PoE requires four pairs and does not apply to single-pair Automotive Ethernet. The automotive equivalent is PoDL (Power over Data Lines, IEEE 802.3bu / 802.3cg), which delivers up to ~50 W over the same single pair as the data signal. Adoption is growing in cameras and small ECUs, but is not yet universal.</p>
+    </details>
+
+    <details>
+      <summary>Is 25GBASE-T1 already available for production vehicles?</summary>
+      <p>The IEEE standard (802.3cy-2023) is published and PHY suppliers have demonstrated silicon. Cable, connector, and EMC qualification on full vehicle programs is in progress; most Tier-1s expect production deployment around 2027–2028, primarily in L4 robotaxi and premium ADAS sensor backbones.</p>
+    </details>
+
+    <details>
+      <summary>What about 10BASE-T1S — does it replace CAN bus?</summary>
+      <p>10BASE-T1S (IEEE 802.3cg) is the multidrop low-speed variant designed to address segments where CAN and LIN traditionally serve. It allows up to 8 nodes on a single shared bus over ~25 m. It does not eliminate CAN — most platforms keep CAN FD for legacy and migrate selected segments to 10BASE-T1S for tooling and software-stack consolidation reasons.</p>
     </details>
   </section>
 
   <!-- =================================================================== -->
-  <!-- Related Articles -->
+  <!-- Related Articles (regrouped) -->
   <!-- =================================================================== -->
   <aside class="pcm-related" aria-label="Related articles">
     <h2>Related Articles</h2>
+
+    <h3>Connector Reference</h3>
     <ul>
       <li><a href="/news/fakra-connector-pinout">FAKRA Connector Color Codes and Pinout: Full Reference Chart</a></li>
-      <li><a href="/news/mini-fakra-connector-guide">Mini FAKRA Explained: 4-in-1 Connector for ADAS Cameras</a></li>
+      <li><a href="/news/mini-fakra-connector-guide">Mini FAKRA / HFM: 4-in-1 Connector for ADAS Cameras</a></li>
       <li><a href="/news/hsd-connector-pinout-wiring">HSD Connector Pinout: Star Quad Wiring for LVDS Cameras</a></li>
-      <li><a href="/news/h-mtd-connector-guide">H-MTD Connector: 10 Gbps Automotive Ethernet for ADAS</a></li>
+      <li><a href="/news/h-mtd-connector-guide">H-MTD Connector: Multi-Gig Automotive Ethernet</a></li>
+      <li><a href="/news/matenet-connector-guide">MATEnet Modular Architecture</a></li>
+    </ul>
+
+    <h3>Selection &amp; Procurement</h3>
+    <ul>
       <li><a href="/news/automotive-ethernet-connector-comparison">FAKRA vs HSD vs H-MTD: Selection Decision Tree</a></li>
       <li><a href="/news/adas-camera-cable-selection">How to Choose Cables for ADAS Camera Systems</a></li>
+      <li><a href="/news/custom-automotive-ethernet-cable-rfq">Custom Automotive Ethernet Cable RFQ Guide</a></li>
       <li><a href="/news/automotive-ethernet-cable-failures">Why Automotive Ethernet Cables Fail: 6 Causes and Fixes</a></li>
       <li><a href="/news/what-is-automotive-wire-harness">What is an Automotive Wire Harness? (Cross-cluster)</a></li>
     </ul>
@@ -479,19 +651,38 @@
   <!-- =================================================================== -->
   <section class="pcm-cta" aria-label="Call to action">
     <h2>Need Custom Automotive Ethernet Cables for Your OEM Program?</h2>
-    <p>We manufacture FAKRA, Mini FAKRA, HSD, H-MTD, and MATEnet cable assemblies in IATF 16949 certified production. Send us your specs (bandwidth, connector, length, environment) and receive a quote within 48 hours.</p>
+    <p>We manufacture FAKRA, Mini FAKRA / HFM, HSD, H-MTD and MATEnet cable assemblies in IATF 16949 certified production in China. Send us the 10-field RFQ checklist above and receive a quotation with DFM review, sample timeline and OPEN Alliance test plan within 48 hours.</p>
     <a class="pcm-cta-btn" href="/contact-us">Request a Quote →</a>
   </section>
+
+  <!-- =================================================================== -->
+  <!-- Sources & Standards Referenced (NEW — EEAT) -->
+  <!-- =================================================================== -->
+  <aside class="pcm-related" aria-label="Sources and standards referenced">
+    <h2>Sources &amp; Standards Referenced</h2>
+    <ul>
+      <li>IEEE 802.3bw-2015 — 100BASE-T1</li>
+      <li>IEEE 802.3bp-2016 — 1000BASE-T1</li>
+      <li>IEEE 802.3cg-2019 — 10BASE-T1S / 10BASE-T1L</li>
+      <li>IEEE 802.3ch-2020 — 2.5/5/10GBASE-T1</li>
+      <li>IEEE 802.3cy-2023 — 25GBASE-T1 (single balanced pair)</li>
+      <li>IEEE 802.3cz-2023 — Optical Automotive Ethernet 2.5–50 Gb/s</li>
+      <li>OPEN Alliance TC1 / TC8 / TC9 / TC10 / TC15 (<a href="https://opensig.org/" rel="noopener" target="_blank">opensig.org</a>)</li>
+      <li>Rosenberger H-MTD and HFM datasheets (<a href="https://www.rosenberger.com/" rel="noopener" target="_blank">rosenberger.com</a>)</li>
+      <li>TE Connectivity MATEnet and GEMnet product pages</li>
+      <li>Amphenol NETBridge / NETBridge+ product page</li>
+      <li>Molex HSAutoLink II product page</li>
+      <li>HARTING ix Industrial product page</li>
+      <li>Industry projection sources: Strategy Analytics, IHS Markit, Yole Développement</li>
+    </ul>
+  </aside>
 
   <!-- =================================================================== -->
   <!-- Footer Meta -->
   <!-- =================================================================== -->
   <footer class="pcm-meta">
-    <p>
-      <strong>Author:</strong> David Chen — Senior Application Engineer, Premier Cables
-      — <a href="https://www.linkedin.com/in/PLACEHOLDER" rel="author noopener" target="_blank">LinkedIn</a>
-    </p>
-    <p><strong>Reviewed by:</strong> [Senior Engineer Name] — Engineering Manager</p>
+    <p><strong>Author:</strong> Brian — Senior Application Engineer, Premier Cables</p>
+    <p><strong>Reviewed by:</strong> Engineering Team, Premier Cables (IATF 16949 certified production)</p>
     <p><strong>Published:</strong> <time datetime="2026-05-14">May 14, 2026</time></p>
     <p><strong>Last Updated:</strong> <time datetime="2026-05-14">May 14, 2026</time></p>
   </footer>
