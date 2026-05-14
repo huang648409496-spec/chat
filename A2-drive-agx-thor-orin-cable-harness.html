@@ -1,0 +1,416 @@
+<div style="box-sizing:border-box; color:#333333; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif; line-height:1.8; margin-bottom:40px; margin-left:auto; margin-right:auto; margin-top:40px; max-width:1200px; padding:0 20px; width:100%"><!-- Hero Section -->
+<div style="background-color:#1e3a8a; background-image:linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%); border-radius:8px; box-shadow:0 8px 20px rgba(0,0,0,0.15); color:#ffffff; margin-bottom:40px; padding:50px 30px; text-align:center">
+<div style="color:#a7f3d0; font-size:13px; font-weight:700; letter-spacing:0.04em; margin-bottom:12px; text-transform:uppercase">ADAS &amp; Autonomous Driving Engineering Guide</div>
+
+<h1>DRIVE AGX Thor and Orin Cable, Connector and Harness Solutions</h1>
+
+<p style="color:#e2e8f0; font-size:18px; line-height:1.8; margin-bottom:18px; margin-left:auto; margin-right:auto; margin-top:0; max-width:1000px">DRIVE AGX Thor and DRIVE AGX Orin developer kits drive multi-camera perception, automotive Ethernet, lidar, radar and CAN networks at the same time. The cables, adapters and vehicle harnesses connecting them decide whether a bring-up succeeds the first time. This guide covers what the kits expose, what cabling each interface requires, and when a custom assembly is the right answer.</p>
+</div>
+<!-- TL;DR Box -->
+
+<div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; margin-bottom:30px; padding:22px 28px">
+<div style="color:#166534; font-size:14px; font-weight:700; letter-spacing:0.03em; margin-bottom:10px; text-transform:uppercase">TL;DR - Key Takeaways</div>
+
+<ul style="color:#166534; font-size:15px; line-height:1.7; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li>DRIVE AGX Thor Developer Kit ships in two SKUs: SKU 10 for bench development, SKU 12 for in-vehicle development.</li>
+	<li>Thor automotive I/O includes 16x GMSL2 + 2x GMSL3 camera ports and 3x 100/1000/10G-T1 automotive Ethernet on H-MTD connectors (per NVIDIA).</li>
+	<li>DRIVE AGX Orin exposes 16 GMSL camera ports and multiple automotive Ethernet interfaces, with NVIDIA listing up to 30 Gb/s of total Ethernet data transmission.</li>
+	<li>The three cable categories that matter: GMSL camera cables, H-MTD Ethernet (with optional H-MTD-to-RJ45 adapter), and a routed vehicle harness.</li>
+	<li>Length, shielding and connector mating are the variables most likely to break a first-time bring-up.</li>
+</ul>
+</div>
+<!-- Definition Box -->
+
+<div style="background:#eff6ff; border-left:4px solid #3b82f6; border-radius:4px; margin-bottom:40px; padding:18px 24px">
+<p style="color:#1e40af; font-size:16px; font-weight:500; line-height:1.7; margin-bottom:0; margin-top:0"><strong>Definition:</strong> A DRIVE AGX cable and harness solution is the set of GMSL camera cables, H-MTD or RJ45 automotive Ethernet cables, power cables and vehicle harnesses used to connect an NVIDIA DRIVE AGX Thor or Orin developer kit to cameras, sensors and vehicle networks during ADAS and autonomous driving development.</p>
+</div>
+<!-- Table of Contents -->
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; margin-bottom:60px; padding:25px 30px">
+<h3 style="border-bottom:1px solid #eeeeee; color:#111827; font-size:18px; margin-bottom:15px; margin-top:0; padding-bottom:10px">📋 Contents</h3>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px">
+<ol style="color:#4b5563; flex:1; font-size:15px; line-height:1.8; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; min-width:280px; padding-left:20px" class="pro-ulli1">
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-sec1">Why DRIVE AGX Cabling Is Different</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-sec2">DRIVE AGX Thor: Interface Map</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-sec3">DRIVE AGX Orin: Interface Map</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-sec4">Camera Cable Design Notes</a></li>
+	<li style="margin-bottom:0;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-sec5">Ethernet &amp; Adapter Cable Options</a></li>
+</ol>
+
+<ol start="6" style="color:#4b5563; flex:1; font-size:15px; line-height:1.8; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; min-width:280px; padding-left:20px" class="pro-ulli1">
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-sec6">Vehicle Harness: Bench vs In-Vehicle</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-sec7">When to Order a Custom Assembly</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-sec8">Typical Applications</a></li>
+	<li style="margin-bottom:8px;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-faq">Frequently Asked Questions</a></li>
+	<li style="margin-bottom:0;"><a style="color:#0f766e; text-decoration:none; font-weight:600;" href="#agx-contact">Need a Custom Cable or Harness?</a></li>
+</ol>
+</div>
+</div>
+<!-- Section 1 -->
+
+<div style="margin-bottom:60px">
+<h2 id="agx-sec1" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Why DRIVE AGX Cabling Is Different from Standard Embedded Wiring</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">DRIVE AGX developer kits are not lab evaluation boards. They drive multi-camera perception, lidar, radar and CAN networks at the same time, often inside a moving test vehicle.</p>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">A typical DRIVE AGX bring-up involves a large number of camera links, multiple automotive Ethernet branches and a vehicle-side power and CAN connection. Any single cable that fails on impedance, shielding or mating tolerance can show up later as a dropped frame, a lost sensor packet or a CAN bus error during a test drive.</p>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">For this reason, DRIVE AGX cable design has to balance three things at once: high-speed signal integrity for GMSL and automotive Ethernet, automotive-grade mechanical durability against vibration and sealing requirements, and vehicle routing constraints such as length, bend radius and harness branching.</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px; margin-bottom:20px; margin-top:30px">
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; flex:1; min-width:250px; padding:15px; text-align:center">
+<div style="align-items:center; background:#f8fafc; border-radius:6px; display:flex; justify-content:center; min-height:200px; padding:10px"><img alt="DRIVE AGX Thor developer kit cable connections overview" loading="lazy" title="DRIVE AGX Thor Cable Overview" src="/uploads/PLACEHOLDER-drive-agx-thor-cable-overview.webp" /></div>
+
+<p style="color:#0f766e; font-size:14px; font-weight:bold; margin-bottom:0; margin-left:0; margin-right:0; margin-top:10px">DRIVE AGX Thor Bench Cable Setup</p>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; flex:1; min-width:250px; padding:15px; text-align:center">
+<div style="align-items:center; background:#f8fafc; border-radius:6px; display:flex; justify-content:center; min-height:200px; padding:10px"><img alt="DRIVE AGX Orin in-vehicle harness routing example" loading="lazy" title="DRIVE AGX Orin In-Vehicle Harness" src="/uploads/PLACEHOLDER-drive-agx-orin-vehicle-harness.webp" /></div>
+
+<p style="color:#0f766e; font-size:14px; font-weight:bold; margin-bottom:0; margin-left:0; margin-right:0; margin-top:10px">DRIVE AGX Orin In-Vehicle Harness Routing</p>
+</div>
+</div>
+</div>
+<!-- Section 2 -->
+
+<div style="margin-bottom:60px">
+<h2 id="agx-sec2" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">DRIVE AGX Thor: Interface Map and Cable Requirements</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">DRIVE AGX Thor is NVIDIA's production-class autonomous vehicle compute platform. NVIDIA's DRIVE AGX page lists two developer kit SKUs that serve different stages of the development cycle.</p>
+
+<h3 style="color:#0f766e; font-size:20px; margin-bottom:10px; margin-top:25px">Thor SKU 10 vs SKU 12</h3>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:25%"><span style="color:#ffffff">Item</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:37.5%"><span style="color:#ffffff">SKU 10 (Bench)</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:37.5%"><span style="color:#ffffff">SKU 12 (In-Vehicle)</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Use case (per NVIDIA)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Bench development</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">In-vehicle development</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Camera ports</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">16x GMSL2 + 2x GMSL3</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">16x GMSL2 + 2x GMSL3</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Automotive Ethernet</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">3x 100/1000/10G-T1, H-MTD (quad and 6-port)</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">3x 100/1000/10G-T1, H-MTD (quad and 6-port)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Display</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">1x DisplayPort up to 4K@60Hz</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">1x DisplayPort up to 4K@60Hz</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px">Typical cabling focus</td>
+			<td style="padding:11px 14px">Adapter cables, short bench leads, lab-side connectivity</td>
+			<td style="padding:11px 14px">Sealed vehicle harness, routed trunks, vehicle power and CAN</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p style="color:#6b7280; font-size:13px; font-style:italic; margin-bottom:20px; margin-top:0">I/O list per NVIDIA DRIVE AGX official page (developer.nvidia.com/drive/agx).</p>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">For Thor, three cable categories cover most projects:</p>
+
+<h3 style="color:#0f766e; font-size:20px; margin-bottom:10px; margin-top:25px">Camera Cables</h3>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:15px">Thor camera ports use the GMSL family. GMSL2 (Analog Devices) operates at up to 6 Gbps on the forward channel and 187.5 Mbps on the reverse channel; GMSL3 operates at 12 Gbps forward and 187.5 Mbps reverse, using PAM4 encoding. Connector choice on the kit side and camera side is typically Fakra (single coax) or Mini-Fakra / MATE-AX (multi-channel in one shell). The exact connector pairing depends on the camera module being used.</p>
+
+<h3 style="color:#0f766e; font-size:20px; margin-bottom:10px; margin-top:25px">Automotive Ethernet Cables</h3>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:15px">Thor exposes 100BASE-T1, 1000BASE-T1 and 10GBASE-T1 over H-MTD connectors. For lab use, an H-MTD-to-RJ45 adapter cable is typically needed to talk to standard switches and test equipment, often paired with a media converter on the higher-speed links.</p>
+
+<h3 style="color:#0f766e; font-size:20px; margin-bottom:10px; margin-top:25px">Vehicle Harness</h3>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:15px">A Thor SKU 12 vehicle harness usually bundles vehicle power, ignition signal, CAN/CAN-FD, multiple H-MTD Ethernet branches and the GMSL camera trunk into a single routed assembly with grommets and mounting brackets. The exact branch count and length is project-specific.</p>
+</div>
+<!-- Section 3 -->
+
+<div style="margin-bottom:60px">
+<h2 id="agx-sec3" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">DRIVE AGX Orin: Interface Map and Cable Requirements</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">DRIVE AGX Orin remains widely deployed and is still the primary compute platform for many active ADAS programs. NVIDIA's DRIVE AGX page lists Orin with 16 GMSL camera ports and multiple automotive Ethernet interfaces, with up to 30 Gb/s of total Ethernet data transmission.</p>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:35%"><span style="color:#ffffff">Item</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:65%"><span style="color:#ffffff">DRIVE AGX Orin Developer Kit</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Camera ports</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">16 GMSL camera ports (per NVIDIA)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Automotive Ethernet</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Multiple interfaces, up to 30 Gb/s total data transmission (per NVIDIA)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Vehicle interfaces</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">CAN; vehicle harness accessory available</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px">Typical cabling focus</td>
+			<td style="padding:11px 14px">GMSL camera cable, H-MTD-to-RJ45 adapter, vehicle harness</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">Orin camera cables are most often used for surround-view, front-view and side-view multi-camera setups. Because GMSL serial links carry control and Power-over-Coax (PoC) on the same cable, both signal integrity and DC behavior of the cable matter.</p>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">For Ethernet, an Orin H-MTD-to-RJ45 adapter cable is the standard way to bridge the kit to a lab Ethernet switch, a data logger or an automotive Ethernet media converter. Specific adapter selection depends on which Ethernet interface on the kit is being used and what target test equipment is on the other end.</p>
+</div>
+<!-- Section 4 -->
+
+<div style="margin-bottom:60px">
+<h2 id="agx-sec4" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Camera Cable Design Notes for DRIVE AGX</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">Camera cabling is where most DRIVE AGX bring-ups either pass or fail on day one. Five engineering parameters drive the result.</p>
+
+<ol style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:25px; margin-top:0; padding-left:22px" class="pro-ulli1">
+	<li style="margin-bottom:10px;"><strong>Impedance.</strong> GMSL coax cables are designed around 50 Ω nominal characteristic impedance. Using a 75 Ω cable in a 50 Ω system is a common procurement mistake and will cause link instability.</li>
+	<li style="margin-bottom:10px;"><strong>Shielding.</strong> Double-shielded coax (foil + braid) is the typical choice for in-vehicle GMSL cables, both for signal integrity and EMC. Single-shielded variants may be used only for short bench cables.</li>
+	<li style="margin-bottom:10px;"><strong>Bend radius.</strong> Mini-Fakra and MATE-AX assemblies have manufacturer-specified minimum bend radii; tight zip-tying near the connector shell is one of the more frequent root causes of intermittent links. Always check the connector vendor's datasheet for the specific minimum.</li>
+	<li style="margin-bottom:10px;"><strong>PoC behavior.</strong> GMSL2 and GMSL3 links typically carry PoC to power the camera module. The actual PoC voltage and current depend on the camera and the ser/des design, not on the cable alone. The cable's DC resistance and the PoC inductor on each end must be specified together with the system, not chosen in isolation.</li>
+	<li style="margin-bottom:10px;"><strong>Connector mating cycles.</strong> Automotive RF connectors (Fakra, Mini-Fakra/HFM, H-MTD) have a specified mating cycle limit defined by the connector vendor's datasheet. Bench projects that repeatedly plug and unplug should track this against the spec to avoid contact wear.</li>
+</ol>
+
+<div style="background:#fff7ed; border-left:4px solid #ea580c; border-radius:4px; margin-bottom:25px; padding:15px">
+<p style="color:#9a3412; font-size:15px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong>⚠️ Field experience:</strong> When a GMSL link drops frames intermittently, the three most common root causes are: wrong cable impedance (75 Ω instead of 50 Ω), violation of the connector's minimum bend radius near the shell, and PoC inductor mismatch at the cable interface. Check these three before suspecting the camera or the developer kit.</p>
+</div>
+</div>
+<!-- Section 5 -->
+
+<div style="margin-bottom:60px">
+<h2 id="agx-sec5" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Ethernet and Adapter Cable Options</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">DRIVE AGX Ethernet cabling has two distinct use modes.</p>
+
+<h3 style="color:#0f766e; font-size:20px; margin-bottom:10px; margin-top:0">In-Vehicle Automotive Ethernet (H-MTD to H-MTD)</h3>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:20px">Used between the developer kit and vehicle switches, lidar units, radar sensors or other ECUs. The cable is typically shielded twisted pair, 100 Ω differential, supporting BASE-T1 variants per <a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://standards.ieee.org/ieee/802.3bp/5957/" rel="noopener noreferrer">IEEE 802.3bp (1000BASE-T1)</a> and <a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://standards.ieee.org/ieee/802.3ch/7837/" rel="noopener noreferrer">IEEE 802.3ch (Multi-Gig Automotive Ethernet, including 10GBASE-T1)</a>.</p>
+
+<h3 style="color:#0f766e; font-size:20px; margin-bottom:10px; margin-top:25px">Lab Ethernet (H-MTD-to-RJ45 Adapter)</h3>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:20px">Used to connect the kit to a standard office or lab switch, a PC NIC or a logging server. A common procurement mistake: ordering an H-MTD-to-RJ45 cable for a 10GBASE-T1 port and expecting it to link with an RJ45 port on a standard 10GBASE-T switch. RJ45 ports on standard switches do not natively understand BASE-T1 framing, so a passive adapter cable alone will not establish the link at multi-gig speeds; an active media converter is normally required.</p>
+
+<div style="background:#fff7ed; border-left:4px solid #ea580c; border-radius:4px; margin-bottom:25px; padding:15px">
+<p style="color:#9a3412; font-size:15px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong>⚠️ Important:</strong> Always confirm the target Ethernet speed (100 / 1000 / 10G BASE-T1) before specifying an adapter. A passive H-MTD-to-RJ45 cable that works at 100BASE-T1 with a media converter will not transparently bridge a 10GBASE-T1 port to a 10GBASE-T RJ45 switch.</p>
+</div>
+</div>
+<!-- Section 6 -->
+
+<div style="margin-bottom:60px">
+<h2 id="agx-sec6" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Vehicle Harness: Bench vs In-Vehicle</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">The harness changes character completely between bench and vehicle environments. Specifying a bench-style harness for a vehicle install is one of the most expensive mistakes in this category.</p>
+
+<div style="border-radius:6px; border:1px solid #dddddd; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:25px; overflow-x:auto">
+<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; width:100%">
+	<thead>
+		<tr>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:25%"><span style="color:#ffffff">Requirement</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:37.5%"><span style="color:#ffffff">Bench Harness</span></th>
+			<th style="background-color:#004085; text-align:left; padding:12px 14px; width:37.5%"><span style="color:#ffffff">In-Vehicle Harness</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Length</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Short, project-specific</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Project-specific, vehicle-routed</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Sealing</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Typically none</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Sealing required at vehicle penetration points</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Strain relief</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Optional</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Required at every branch</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Power</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Bench PSU pigtail</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Fused, ignition-switched vehicle power</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">CAN</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Single drop typical</td>
+			<td style="border-bottom:1px solid #eeeeee; padding:11px 14px">Multi-drop with proper termination</td>
+		</tr>
+		<tr>
+			<td style="padding:11px 14px">Mounting</td>
+			<td style="padding:11px 14px">Loose</td>
+			<td style="padding:11px 14px">Brackets, grommets, P-clips</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:0">A well-designed in-vehicle harness for DRIVE AGX Thor SKU 12 typically routes the GMSL camera trunk along structural pillars or the roof liner, the H-MTD Ethernet through the center console area, and the power and CAN branch toward the OBD area or a dedicated fuse tap. The exact routing is always vehicle-specific.</p>
+</div>
+<!-- Section 7 -->
+
+<div style="margin-bottom:60px">
+<h2 id="agx-sec7" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">When to Order a Custom Cable Assembly</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">A custom assembly makes sense when at least one of these is true:</p>
+
+<ul style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:20px; margin-top:0; padding-left:22px" class="pro-ulli1">
+	<li style="margin-bottom:8px;"><strong>Length and routing.</strong> Cable length needs to be cut and terminated to a vehicle-specific routing path. This is the single most common driver.</li>
+	<li style="margin-bottom:8px;"><strong>Cross-standard connector pairing.</strong> For example MATE-AX on the camera side mating to Fakra or HSD on a legacy sensor side.</li>
+	<li style="margin-bottom:8px;"><strong>Tighter EMC or shielding spec.</strong> For vehicles with sensitive RF environments or strict OEM EMC requirements.</li>
+	<li style="margin-bottom:8px;"><strong>Fleet traceability.</strong> The project needs labeled, serialized harnesses for fleet deployment and field service.</li>
+</ul>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:15px">Custom DRIVE AGX cable assembly orders are quoted against three inputs: an interface list (which Thor or Orin ports, which sensor/host on the other side), a length and routing diagram, and a target shielding or EMC class.</p>
+
+<div style="background:#f8fafc; border-left:4px solid #0f766e; border-radius:6px; margin-top:25px; padding:20px 25px">
+<h3 style="color:#0f766e; font-size:18px; margin-bottom:8px; margin-top:0">📩 What to Send With Your RFQ</h3>
+
+<p style="color:#1f2937; font-size:15px; line-height:1.7; margin-bottom:0; margin-top:0">Interface list (Thor/Orin port + sensor/host port) · Cable lengths and routing notes · Required shielding/EMC class · Sealing class (if in-vehicle) · Quantity and target delivery window. Premier Cable returns a quoted assembly drawing and material list against this input.</p>
+</div>
+</div>
+<!-- Section 8 -->
+
+<div style="margin-bottom:60px">
+<h2 id="agx-sec8" style="border-bottom:2px solid #eeeeee; color:#111827; font-size:26px; line-height:1.3; margin-bottom:20px; padding-bottom:10px; scroll-margin-top:40px">Typical Applications</h2>
+
+<p style="color:#1f2937; font-size:17px; line-height:1.8; margin-bottom:20px">DRIVE AGX cable and harness solutions are used across the ADAS development cycle. The hardware does not change much between use cases - what changes is harness length, sealing class and the ratio of bench adapters to vehicle-grade connectors.</p>
+
+<ul style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:20px; margin-top:0; padding-left:22px" class="pro-ulli1">
+	<li style="margin-bottom:8px;"><strong>ADAS domain controller bring-up</strong> - Lab-side cable kits for software bring-up and unit-level test.</li>
+	<li style="margin-bottom:8px;"><strong>Multi-camera perception bench testing</strong> - GMSL2/3 camera cable kits with bench-grade connectors.</li>
+	<li style="margin-bottom:8px;"><strong>Surround-view and front/side-view validation</strong> - Coordinated camera trunk routing across multiple GMSL ports.</li>
+	<li style="margin-bottom:8px;"><strong>Radar and lidar data link verification</strong> - Automotive Ethernet between sensors and the DRIVE AGX kit.</li>
+	<li style="margin-bottom:8px;"><strong>Automotive Ethernet conformance testing</strong> - H-MTD-to-RJ45 adapter cables paired with media converters.</li>
+	<li style="margin-bottom:8px;"><strong>In-vehicle data collection fleets</strong> - Serialized, sealed harnesses for fleet deployment and service.</li>
+	<li style="margin-bottom:8px;"><strong>HIL and SIL setups</strong> - Bench harnesses for hardware/software-in-the-loop test rigs.</li>
+	<li style="margin-bottom:8px;"><strong>Prototype vehicle integration</strong> - Vehicle-routed harness combining power, CAN, Ethernet and camera trunks.</li>
+</ul>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px; margin-bottom:20px">
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; flex:1; min-width:250px; padding:15px; text-align:center">
+<div style="align-items:center; background:#f8fafc; border-radius:6px; display:flex; justify-content:center; min-height:200px; padding:10px"><img alt="GMSL camera cable assembly with Fakra and Mini-Fakra connectors" loading="lazy" title="GMSL Camera Cable Assembly" src="/uploads/PLACEHOLDER-gmsl-camera-cable-assembly.webp" /></div>
+
+<p style="color:#0f766e; font-size:14px; font-weight:bold; margin-bottom:0; margin-left:0; margin-right:0; margin-top:10px">GMSL Camera Cable - Fakra / Mini-Fakra</p>
+</div>
+
+<div style="background:#ffffff; border-radius:8px; border:1px solid #e5e7eb; flex:1; min-width:250px; padding:15px; text-align:center">
+<div style="align-items:center; background:#f8fafc; border-radius:6px; display:flex; justify-content:center; min-height:200px; padding:10px"><img alt="H-MTD to RJ45 automotive Ethernet adapter cable for DRIVE AGX" loading="lazy" title="H-MTD to RJ45 Adapter Cable" src="/uploads/PLACEHOLDER-hmtd-rj45-adapter-cable.webp" /></div>
+
+<p style="color:#0f766e; font-size:14px; font-weight:bold; margin-bottom:0; margin-left:0; margin-right:0; margin-top:10px">H-MTD to RJ45 Adapter Cable</p>
+</div>
+</div>
+</div>
+<!-- FAQ Section -->
+
+<div style="background:#f8fafc; border-radius:8px; border:1px solid #e5e7eb; margin-bottom:60px; padding:35px 30px">
+<h2 id="agx-faq" style="border-bottom:2px solid #e5e7eb; color:#111827; font-size:26px; line-height:1.3; margin-bottom:25px; margin-top:0; padding-bottom:10px; scroll-margin-top:40px">Frequently Asked Questions</h2>
+
+<p style="margin-bottom:5px"><strong>What cables does DRIVE AGX Thor use for cameras?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">According to NVIDIA, Thor exposes 16 GMSL2 ports plus 2 GMSL3 ports. GMSL2 and GMSL3 are Analog Devices' high-speed automotive serial link technologies, typically running over 50 Ω coax. The exact connector (Fakra, Mini-Fakra or MATE-AX) depends on the camera module selected.</p>
+
+<p style="margin-bottom:5px"><strong>What is an H-MTD-to-RJ45 adapter cable used for?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">It is used to connect a DRIVE AGX kit's automotive Ethernet H-MTD port to a standard lab switch, PC or data logger that uses RJ45. Note that BASE-T1 to RJ45 normally requires an active media converter on multi-gig links, not just a passive adapter cable.</p>
+
+<p style="margin-bottom:5px"><strong>What is the cabling difference between Thor SKU 10 and SKU 12?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">SKU 10 is bench-oriented and is usually paired with short, unsealed adapter cables and a lab power supply. SKU 12 is intended for in-vehicle development and typically needs a full sealed harness with vehicle power, CAN, multiple H-MTD Ethernet branches and routed GMSL camera trunks.</p>
+
+<p style="margin-bottom:5px"><strong>Can custom cables be made for DRIVE AGX Thor and Orin?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:20px; margin-top:0">Yes. Custom GMSL camera cables, H-MTD Ethernet cables and full vehicle harnesses can be built to project-specific length, shielding and connector pairing. A typical quote starts from the interface list, the vehicle routing diagram and the EMC or sealing class required.</p>
+
+<p style="margin-bottom:5px"><strong>Why does my GMSL camera link drop frames intermittently?</strong></p>
+
+<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:0; margin-top:0">The most common root causes seen in the field are wrong cable impedance (75 Ω instead of 50 Ω), violation of the connector's minimum bend radius near the shell, and PoC design issues at the cable / inductor interface. Check these three first before suspecting the camera or the developer kit.</p>
+</div>
+<!-- Authority References -->
+
+<div style="background:#ffffff; border:1px solid #e5e7eb; border-radius:8px; margin-bottom:40px; padding:25px 30px">
+<h3 style="color:#111827; font-size:20px; margin-bottom:15px; margin-top:0">📚 Authority References</h3>
+
+<ul style="color:#1f2937; font-size:15px; line-height:1.9; margin-bottom:0; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://developer.nvidia.com/drive/agx" rel="noopener noreferrer">NVIDIA - DRIVE AGX Developer Kits</a> (Thor SKU 10 / SKU 12; 16x GMSL2 + 2x GMSL3; 3x 100/1000/10G-T1 H-MTD; Orin GMSL ports and Ethernet data transmission)</li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.analog.com/en/resources/app-notes/an-2585.html" rel="noopener noreferrer">Analog Devices AN-2585 - GMSL3 Channel Specification</a> (12 Gbps forward, 187.5 Mbps reverse, PAM4 encoding)</li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.analog.com/en/products/max96717.html" rel="noopener noreferrer">Analog Devices MAX9671x / MAX9679x family datasheets</a> (GMSL2 forward link rates of 3 Gbps or 6 Gbps, 187.5 Mbps reverse)</li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.rosenberger.com/product/hfm-high-speed-fakra-mini/" rel="noopener noreferrer">Rosenberger HFM (High-Speed FAKRA-Mini)</a> product page (Mini-Fakra ecosystem and bandwidth class)</li>
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://standards.ieee.org/ieee/802.3bp/5957/" rel="noopener noreferrer">IEEE 802.3bp (1000BASE-T1)</a> and <a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://standards.ieee.org/ieee/802.3ch/7837/" rel="noopener noreferrer">IEEE 802.3ch (Multi-Gig Automotive Ethernet, 10GBASE-T1)</a></li>
+</ul>
+</div>
+<!-- Related Articles -->
+
+<div style="background:#ffffff; border:1px solid #e5e7eb; border-radius:8px; margin-bottom:40px; padding:25px 30px">
+<h3 style="color:#111827; font-size:20px; margin-bottom:15px; margin-top:0">📖 Related Articles</h3>
+
+<ul style="color:#1f2937; font-size:15px; line-height:1.9; margin-bottom:0; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li><a target="_blank" style="color:#0f766e; text-decoration:underline; font-weight:600;" href="https://www.premier-cables.com/news/what-is-automotive-ethernet.html">What Is Automotive Ethernet? 100BASE-T1, 1000BASE-T1, 10GBASE-T1 Explained</a></li>
+	<li><span style="color:#6b7280;">[待匹配站内 URL]</span> GMSL2 vs GMSL3: Bandwidth, PoC and Connector Selection</li>
+	<li><span style="color:#6b7280;">[待匹配站内 URL]</span> Fakra vs Mini-Fakra vs MATE-AX: Automotive Coax Connector Guide</li>
+	<li><span style="color:#6b7280;">[待匹配站内 URL]</span> H-MTD Connector Overview for Automotive Ethernet</li>
+	<li><span style="color:#6b7280;">[待匹配站内 URL]</span> Automotive Ethernet 1000BASE-T1 vs 10GBASE-T1: Cable and Connector Comparison</li>
+</ul>
+</div>
+<!-- CTA Section -->
+
+<div style="background:#eff6ff; border-radius:8px; border:1px solid #bfdbfe; margin-bottom:60px; padding:35px 30px">
+<h2 id="agx-contact" style="color:#1e3a8a; font-size:24px; line-height:1.3; margin-bottom:15px; margin-top:0; scroll-margin-top:40px">Need a Custom DRIVE AGX Cable, Adapter or Vehicle Harness?</h2>
+
+<p style="color:#1f2937; font-size:16px; line-height:1.8; margin-bottom:15px; margin-top:0">Send us your <strong>interface list (Thor/Orin port + sensor/host port), cable lengths and routing notes, shielding/EMC class, sealing class, quantity and target delivery window</strong>. Our engineering team will reply with a quoted assembly drawing and material list.</p>
+
+<ul style="color:#4b5563; font-size:15px; line-height:1.8; margin-bottom:20px; margin-top:0; padding-left:20px" class="pro-ulli1">
+	<li>Not sure which connector fits your sensor side? Send the camera/sensor model and we will recommend.</li>
+	<li>Need an H-MTD-to-RJ45 adapter for a specific lab switch? We will confirm whether a passive cable or a media converter is needed before quoting.</li>
+	<li>Building a fleet harness? We support labeling, serialization and per-unit traceability.</li>
+</ul>
+
+<div><a target="_blank" style="display:inline-block; border:1px solid #0f766e; background-color:#0f766e; color:#ffffff; font-weight:bold; text-decoration:none; padding:10px 25px; border-radius:4px; font-size:15px; box-shadow:0 4px 10px rgba(15,118,110,0.2);" href="https://www.premier-cables.com/contact-us">Send Your Requirements →</a></div>
+</div>
+<!-- Contact Block -->
+
+<div style="background:#ffffff; border-radius:8px; border-top:4px solid #0f766e; border:1px solid #e5e7eb; box-shadow:0 4px 15px rgba(0,0,0,0.03); margin-bottom:30px; padding:35px 30px">
+<div style="color:#0f766e; font-size:13px; font-weight:700; letter-spacing:0.04em; margin-bottom:12px; text-transform:uppercase">📩 Contact Us</div>
+
+<h2 style="color:#111827; font-size:26px; line-height:1.3; margin-bottom:15px; margin-top:0">Source DRIVE AGX Thor &amp; Orin Cable Assemblies</h2>
+
+<p style="color:#444444; font-size:17px; line-height:1.8; margin-bottom:20px; margin-top:0"><strong>Premier Cable</strong> manufactures GMSL camera cables, H-MTD automotive Ethernet cables, H-MTD-to-RJ45 adapters and full vehicle harnesses for DRIVE AGX Thor and Orin development programs. Standard and custom assemblies available. Contact our engineering team for specification support or quotation.</p>
+
+<div style="color:#1f2937; display:flex; flex-wrap:wrap; font-size:16px; gap:15px 30px; line-height:1.8">
+<div><strong>Email:</strong> <a style="color:#0f766e; text-decoration:none; font-weight:bold;" href="mailto:sales03@premier-cable.net">sales03@premier-cable.net</a></div>
+
+<div><strong>WhatsApp:</strong> <a style="color:#0f766e; text-decoration:none; font-weight:bold;" href="https://wa.me/8618980808890">+86 189 8080 8890</a></div>
+
+<div><strong>Website:</strong> <a style="color:#0f766e; text-decoration:none; font-weight:bold;" href="https://www.premier-cables.com">www.premier-cables.com</a></div>
+</div>
+</div>
+<!-- Footer Meta -->
+
+<div style="border-top:1px solid #e5e7eb; color:#6b7280; font-size:14px; line-height:1.7; margin-top:30px; padding-top:20px">
+<p style="margin:0 0 6px 0"><strong>Author:</strong> [Engineer Name] - Application Engineer, Premier Cable</p>
+
+<p style="margin:0 0 6px 0"><strong>Reviewed by:</strong> [Senior Engineer Name] - Automotive Cable Specialist</p>
+
+<p style="margin:0"><strong>Last Updated:</strong> May 2026</p>
+</div>
+</div>
