@@ -9,7 +9,7 @@
                   and OEM standards in this complete guide.
   Primary KW:     what is automotive ethernet
   Word Count:     ~3300
-  Author:         Brian (Senior Application Engineer, Premier Cables)
+  Author:         Brian Huang (Senior Application Engineer, Veycord)
   CSS Required:   /assets/article.css  (class-based, .pcm- prefix)
 
   REVISIONS v2 → v3 (2026-05-14):
@@ -119,7 +119,7 @@
 
     <p>Automotive Ethernet does not replace CAN bus, LIN, or FlexRay. It complements them. Three protocols dominated vehicle networks for decades and continue to ship in volume: CAN (1986) for body and powertrain control at up to 1 Mbps (CAN FD up to 8 Mbps), LIN for low-cost local subnets, and SerDes families (FPD-Link III, GMSL) for camera and display video. Each remains the right choice for its segment.</p>
 
-    <p>What changed is that ADAS and infotainment created a new bandwidth tier neither CAN nor SerDes can serve as a network. A single front-camera ADAS module today produces 800 Mbps of raw video at 1080p/30fps. A LiDAR sensor outputs 100–400 Mbps. A modern infotainment head unit serving rear-seat displays can saturate a 1 Gbps link. CAN cannot carry any of this; SerDes can carry one stream per link but is point-to-point, not switchable like Ethernet.</p>
+    <p>What changed is that ADAS and infotainment created a new bandwidth tier neither CAN nor SerDes can serve as a network. A 1080p/30fps front camera can generate hundreds of Mbps to more than 1 Gbps of payload, depending on pixel format, color depth and any in-sensor compression or preprocessing. A LiDAR sensor outputs 100–400 Mbps. A modern infotainment head unit serving rear-seat displays can saturate a 1 Gbps link. CAN cannot carry any of this; SerDes can carry one stream per link but is point-to-point, not switchable like Ethernet.</p>
 
     <p>Three structural advantages drove the move to Ethernet for high-bandwidth links:</p>
 
@@ -364,7 +364,7 @@
 
     <ul>
       <li><strong>TC1 — 100BASE-T1 Channel.</strong> Original channel and link segment specifications for 100 Mbps cables.</li>
-      <li><strong>TC8 — ECU Test Specification.</strong> Compliance test for 100BASE-T1 / 1000BASE-T1 ECUs and cable assemblies.</li>
+      <li><strong>TC8 — ECU / PHY Test Specification.</strong> Compliance and interoperability test for 100BASE-T1 / 1000BASE-T1 ECUs and PHY implementations. Cable, connector and link-segment specifications are covered separately under TC9.</li>
       <li><strong>TC9 — <a href="https://opensig.org/tech-committee/tc9-automotive-ethernet-channel-components/" rel="noopener" target="_blank">Channel &amp; Components</a>.</strong> Component-level specifications for the link segment: cable, connectors, in-line connections. Covers 100/1000 BASE-T1 channel components.</li>
       <li><strong>TC10 — <a href="https://opensig.org/tech-committee/tc10-automotive-ethernet-sleep-wake-up/" rel="noopener" target="_blank">Sleep / Wake-Up</a>.</strong> Power management and sleep/wake protocol specification (not multi-gig cable, despite occasional confusion).</li>
       <li><strong>TC15 — <a href="https://opensig.org/tech-committee/tc15-multi-gig-interoperability-and-compliance-tests/" rel="noopener" target="_blank">Multi-Gig Interoperability and Compliance Tests</a>.</strong> Test specifications for 2.5/5/10GBASE-T1 interoperability and compliance.</li>
@@ -411,7 +411,7 @@
           </tr>
           <tr>
             <td>Front ADAS camera (1080p / 30fps)</td>
-            <td>~800 Mbps</td>
+            <td>Hundreds of Mbps to ~1 Gbps*</td>
             <td>1000BASE-T1</td>
             <td>Mini FAKRA / HFM, H-MTD, MATEnet</td>
           </tr>
@@ -454,6 +454,8 @@
         </tbody>
       </table>
     </div>
+
+    <p style="font-size:0.9em;color:#666;margin-top:-12px;">* Front-camera payload depends on pixel format, color depth, and any in-sensor compression. Raw uncompressed video can exceed 1 Gbps; compressed streams are typically lower. Always confirm with the camera datasheet.</p>
 
     <div class="pcm-img-grid">
       <figure class="pcm-img-card">
@@ -545,7 +547,7 @@
 
     <h3>Common RFQ patterns we see (China-side OEM and Tier-2 perspective)</h3>
 
-    <p>As an IATF 16949 certified cable assembly supplier in China, two patterns recur in the RFQs we review for European, North American, and Asian programs:</p>
+    <p>As an IATF 16949 certified cable assembly supplier (Veycord, China), two patterns recur in the RFQs we review for European, North American, and Asian programs:</p>
 
     <ol>
       <li><strong>"Cat5e for Automotive Ethernet"</strong> — First-time buyers often ask for Cat5e because it sounds equivalent to 100BASE-TX. It is not. The cable will pass an in-house bench test and fail OEM TC9 channel verification later in the qualification cycle, costing weeks of program slip.</li>
@@ -613,7 +615,7 @@
 
     <details>
       <summary>Does Automotive Ethernet support PoE?</summary>
-      <p>Standard PoE requires four pairs and does not apply to single-pair Automotive Ethernet. The automotive equivalent is PoDL (Power over Data Lines, IEEE 802.3bu / 802.3cg), which delivers up to ~50 W over the same single pair as the data signal. Adoption is growing in cameras and small ECUs, but is not yet universal.</p>
+      <p>Standard PoE was defined for conventional multi-pair Ethernet cabling — 802.3af / 802.3at use 2 pairs, 802.3bt extends to 4 pairs — and does not directly apply to single-pair Automotive Ethernet. The single-pair equivalent is PoDL (Power over Data Lines, IEEE 802.3bu / 802.3cg), which delivers up to ~50 W over the same single pair as the data signal. Adoption is growing in cameras and small ECUs, but is not yet universal.</p>
     </details>
 
     <details>
@@ -657,7 +659,7 @@
   <!-- =================================================================== -->
   <section class="pcm-cta" aria-label="Call to action">
     <h2>Need Custom Automotive Ethernet Cables for Your OEM Program?</h2>
-    <p>We manufacture FAKRA, Mini FAKRA / HFM, HSD, H-MTD and MATEnet cable assemblies in IATF 16949 certified production in China. Send us the 10-field RFQ checklist above and receive a quotation with DFM review, sample timeline and OPEN Alliance test plan within 48 hours.</p>
+    <p>Veycord manufactures FAKRA, Mini FAKRA / HFM, HSD, H-MTD and MATEnet cable assemblies in IATF 16949 certified production. Send us the 10-field RFQ checklist above and receive an initial quotation or engineering review within 48 hours. Detailed DFM analysis, sample timeline and OPEN Alliance test-plan proposals follow once the spec is locked.</p>
     <a class="pcm-cta-btn" href="/contact-us">Request a Quote →</a>
   </section>
 
@@ -688,8 +690,8 @@
   <!-- Footer Meta -->
   <!-- =================================================================== -->
   <footer class="pcm-meta">
-    <p><strong>Author:</strong> Brian — Senior Application Engineer, Premier Cables</p>
-    <p><strong>Reviewed by:</strong> Engineering Team, Premier Cables (IATF 16949 certified production)</p>
+    <p><strong>Author:</strong> Brian Huang — Senior Application Engineer, Veycord</p>
+    <p><strong>Reviewed by:</strong> Veycord Engineering Team (IATF 16949 certified production)</p>
     <p><strong>Published:</strong> <time datetime="2026-05-14">May 14, 2026</time></p>
     <p><strong>Last Updated:</strong> <time datetime="2026-05-14">May 14, 2026</time></p>
   </footer>
