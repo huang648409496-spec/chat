@@ -1,0 +1,329 @@
+/* =========================================================================
+   premier-cables.com — Article Stylesheet (article.css)
+   Scope:    Automotive cable cluster (33 articles)
+   Naming:   BEM-like, all classes prefixed with .pcm-  (Premier Cables)
+   Build:    External CSS, loaded once per article via <link rel="stylesheet">
+   ========================================================================= */
+
+
+/* ---------- 1. Design tokens -------------------------------------------- */
+:root {
+  /* Brand */
+  --pcm-primary:        #0f766e;          /* teal — main brand */
+  --pcm-primary-dark:   #0b5d57;
+  --pcm-secondary:      #1e3a8a;          /* navy — accent */
+  --pcm-accent:         #a7f3d0;          /* mint — hero tag */
+
+  /* Text */
+  --pcm-text:           #1f2937;
+  --pcm-heading:        #111827;
+  --pcm-muted:          #4b5563;
+  --pcm-link:           #0f766e;
+  --pcm-link-hover:     #0b5d57;
+
+  /* Surfaces */
+  --pcm-bg:             #ffffff;
+  --pcm-bg-soft:        #f8fafc;
+  --pcm-bg-tldr:        #f0fdf4;          /* green */
+  --pcm-bg-tip:         #f0fdf4;
+  --pcm-bg-warn:        #fff7ed;          /* orange */
+  --pcm-bg-def:         #eff6ff;          /* blue */
+  --pcm-bg-cta:         linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
+
+  /* Borders */
+  --pcm-border:         #e5e7eb;
+  --pcm-border-strong:  #d1d5db;
+  --pcm-border-tip:     #16a34a;
+  --pcm-border-warn:    #f97316;
+  --pcm-border-def:     #2563eb;
+
+  /* Spacing (4-pt scale) */
+  --pcm-space-1: 4px;  --pcm-space-2: 8px;  --pcm-space-3: 12px; --pcm-space-4: 16px;
+  --pcm-space-5: 24px; --pcm-space-6: 32px; --pcm-space-7: 48px; --pcm-space-8: 64px;
+
+  /* Radii */
+  --pcm-radius-sm: 4px; --pcm-radius: 8px; --pcm-radius-lg: 12px;
+
+  /* Layout */
+  --pcm-content-max:    800px;
+  --pcm-container-max:  1200px;
+
+  /* Type */
+  --pcm-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --pcm-fs-body: 17px; --pcm-fs-small: 15px;
+  --pcm-fs-h1: 32px;   --pcm-fs-h2: 26px;   --pcm-fs-h3: 20px;
+  --pcm-lh-body: 1.8;  --pcm-lh-tight: 1.3;
+
+  /* Effects */
+  --pcm-shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+  --pcm-shadow:    0 4px 15px rgba(0,0,0,.06);
+  --pcm-shadow-lg: 0 8px 24px rgba(0,0,0,.12);
+}
+
+
+/* ---------- 2. Article container & base typography --------------------- */
+.pcm-article {
+  box-sizing: border-box;
+  max-width: var(--pcm-container-max);
+  margin: var(--pcm-space-7) auto;
+  padding: 0 var(--pcm-space-5);
+  color: var(--pcm-text);
+  font-family: var(--pcm-font-sans);
+  font-size: var(--pcm-fs-body);
+  line-height: var(--pcm-lh-body);
+}
+.pcm-article *, .pcm-article *::before, .pcm-article *::after { box-sizing: border-box; }
+.pcm-article h1, .pcm-article h2, .pcm-article h3, .pcm-article h4 {
+  color: var(--pcm-heading); line-height: var(--pcm-lh-tight); margin: 0 0 var(--pcm-space-4);
+}
+.pcm-article h1 { font-size: var(--pcm-fs-h1); }
+.pcm-article h2 { font-size: var(--pcm-fs-h2); }
+.pcm-article h3 { font-size: var(--pcm-fs-h3); color: var(--pcm-primary); }
+.pcm-article p  { margin: 0 0 var(--pcm-space-4); }
+.pcm-article a  { color: var(--pcm-link); text-decoration: none; font-weight: 600; }
+.pcm-article a:hover { color: var(--pcm-link-hover); text-decoration: underline; }
+.pcm-article ul, .pcm-article ol { margin: 0 0 var(--pcm-space-4); padding-left: var(--pcm-space-5); }
+.pcm-article li { margin-bottom: var(--pcm-space-2); }
+.pcm-section > p, .pcm-section > ul, .pcm-section > ol, .pcm-section > h3 {
+  max-width: var(--pcm-content-max);
+}
+
+
+/* ---------- 3. Breadcrumb ---------------------------------------------- */
+.pcm-breadcrumb { font-size: var(--pcm-fs-small); color: var(--pcm-muted); margin-bottom: var(--pcm-space-5); }
+.pcm-breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: var(--pcm-space-2); }
+.pcm-breadcrumb li + li::before { content: "›"; margin-right: var(--pcm-space-2); color: var(--pcm-border-strong); }
+.pcm-breadcrumb a { color: var(--pcm-muted); font-weight: 500; }
+.pcm-breadcrumb a:hover { color: var(--pcm-primary); }
+
+
+/* ---------- 4. Hero ---------------------------------------------------- */
+.pcm-hero {
+  background: var(--pcm-bg-cta); color: #fff;
+  border-radius: var(--pcm-radius);
+  padding: var(--pcm-space-8) var(--pcm-space-6);
+  margin-bottom: var(--pcm-space-7);
+  text-align: center; box-shadow: var(--pcm-shadow-lg);
+}
+.pcm-hero h1 { color: #fff; margin-bottom: var(--pcm-space-4); }
+.pcm-hero-tag {
+  display: inline-block; color: var(--pcm-accent);
+  font-size: 13px; font-weight: 700; letter-spacing: .04em;
+  text-transform: uppercase; margin-bottom: var(--pcm-space-3);
+}
+.pcm-hero-desc { color: #e2e8f0; font-size: 18px; max-width: 920px; margin: 0 auto; }
+
+
+/* ---------- 5. Callout boxes (TL;DR, Definition, Tip, Warning) --------- */
+.pcm-tldr, .pcm-definition, .pcm-tip, .pcm-warning {
+  border-radius: var(--pcm-radius);
+  padding: var(--pcm-space-5);
+  margin: 0 0 var(--pcm-space-6);
+}
+.pcm-tldr        { background: var(--pcm-bg-tldr); border-left: 4px solid var(--pcm-primary); }
+.pcm-tldr-title  { color: var(--pcm-primary); font-size: var(--pcm-fs-h3); margin: 0 0 var(--pcm-space-3); }
+.pcm-tldr ul     { margin: 0; padding-left: var(--pcm-space-5); }
+.pcm-definition  { background: var(--pcm-bg-def); border-left: 4px solid var(--pcm-border-def); }
+.pcm-definition p{ margin: 0; color: var(--pcm-secondary); }
+.pcm-tip         { background: var(--pcm-bg-tip); border-left: 4px solid var(--pcm-border-tip); }
+.pcm-tip p       { margin: 0; color: #166534; }
+.pcm-warning     { background: var(--pcm-bg-warn); border-left: 4px solid var(--pcm-border-warn); }
+.pcm-warning p   { margin: 0; color: #9a3412; }
+
+
+/* ---------- 6. Table of contents (two-column) -------------------------- */
+.pcm-toc {
+  background: var(--pcm-bg); border: 1px solid var(--pcm-border);
+  border-radius: var(--pcm-radius);
+  padding: var(--pcm-space-5) var(--pcm-space-6);
+  margin-bottom: var(--pcm-space-7);
+}
+.pcm-toc-title {
+  font-size: var(--pcm-fs-h3); color: var(--pcm-heading);
+  border-bottom: 1px solid var(--pcm-border);
+  padding-bottom: var(--pcm-space-3); margin: 0 0 var(--pcm-space-4);
+}
+.pcm-toc ol { columns: 2; column-gap: var(--pcm-space-6); list-style-position: inside; padding: 0; margin: 0; }
+.pcm-toc li { break-inside: avoid; margin-bottom: var(--pcm-space-2); font-size: var(--pcm-fs-small); }
+.pcm-toc a  { font-weight: 600; }
+
+
+/* ---------- 7. Main sections ------------------------------------------- */
+.pcm-section { margin-bottom: var(--pcm-space-8); scroll-margin-top: var(--pcm-space-6); }
+.pcm-section > h2 {
+  border-bottom: 2px solid var(--pcm-border);
+  padding-bottom: var(--pcm-space-3);
+  margin-bottom: var(--pcm-space-5);
+  scroll-margin-top: var(--pcm-space-6);
+}
+
+
+/* ---------- 8. Tables (responsive wrapper + branded thead) ------------- */
+.pcm-table-wrap {
+  border: 1px solid var(--pcm-border); border-radius: var(--pcm-radius);
+  box-shadow: var(--pcm-shadow); overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0 var(--pcm-space-5);
+}
+.pcm-table-wrap table { width: 100%; border-collapse: collapse; font-size: var(--pcm-fs-small); }
+.pcm-table-wrap thead th {
+  background: var(--pcm-primary); color: #fff;
+  text-align: left; font-weight: 600;
+  padding: var(--pcm-space-3) var(--pcm-space-4);
+  border-bottom: 1px solid var(--pcm-primary-dark);
+}
+.pcm-table-wrap tbody td {
+  padding: var(--pcm-space-3) var(--pcm-space-4);
+  border-bottom: 1px solid var(--pcm-border);
+  color: var(--pcm-text); vertical-align: top;
+}
+.pcm-table-wrap tbody tr:last-child td { border-bottom: 0; }
+.pcm-table-wrap tbody tr:nth-child(even) td { background: var(--pcm-bg-soft); }
+
+
+/* ---------- 9. Image grid / cards -------------------------------------- */
+.pcm-img-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--pcm-space-5);
+  margin: 0 0 var(--pcm-space-6);
+}
+.pcm-img-card {
+  background: var(--pcm-bg); border: 1px solid var(--pcm-border);
+  border-radius: var(--pcm-radius); padding: var(--pcm-space-4);
+  text-align: center;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.pcm-img-card:hover { box-shadow: var(--pcm-shadow); transform: translateY(-2px); }
+.pcm-img-card img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--pcm-radius-sm); background: var(--pcm-bg-soft);
+}
+.pcm-img-caption {
+  display: block; margin-top: var(--pcm-space-3);
+  font-size: 14px; font-weight: 600; color: var(--pcm-primary);
+}
+
+
+/* ---------- 10. FAQ (native <details>) --------------------------------- */
+.pcm-faq { margin: 0 0 var(--pcm-space-7); }
+.pcm-faq h2 { margin-bottom: var(--pcm-space-5); }
+.pcm-faq details {
+  background: var(--pcm-bg); border: 1px solid var(--pcm-border);
+  border-radius: var(--pcm-radius);
+  padding: var(--pcm-space-3) var(--pcm-space-5);
+  margin-bottom: var(--pcm-space-3);
+  transition: box-shadow .2s ease;
+}
+.pcm-faq details[open] { box-shadow: var(--pcm-shadow-sm); }
+.pcm-faq summary {
+  cursor: pointer; font-weight: 600; color: var(--pcm-heading);
+  padding: var(--pcm-space-2) 0; padding-right: var(--pcm-space-6);
+  list-style: none; position: relative;
+}
+.pcm-faq summary::-webkit-details-marker { display: none; }
+.pcm-faq summary::after {
+  content: "+"; position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%); font-size: 22px;
+  color: var(--pcm-primary); transition: transform .2s ease;
+}
+.pcm-faq details[open] summary::after { content: "−"; }
+.pcm-faq details > p { margin: var(--pcm-space-3) 0 var(--pcm-space-2); color: var(--pcm-text); }
+
+
+/* ---------- 11. Related Articles --------------------------------------- */
+.pcm-related {
+  background: var(--pcm-bg-soft); border-radius: var(--pcm-radius);
+  padding: var(--pcm-space-5) var(--pcm-space-6);
+  margin: 0 0 var(--pcm-space-7);
+}
+.pcm-related h2 { margin-top: 0; font-size: var(--pcm-fs-h3); }
+.pcm-related ul { list-style: none; padding: 0; margin: 0; }
+.pcm-related li { padding: var(--pcm-space-2) 0; border-bottom: 1px dashed var(--pcm-border); }
+.pcm-related li:last-child { border-bottom: 0; }
+
+
+/* ---------- 12. CTA ---------------------------------------------------- */
+.pcm-cta {
+  background: var(--pcm-bg-cta); color: #fff;
+  border-radius: var(--pcm-radius);
+  padding: var(--pcm-space-7) var(--pcm-space-6);
+  text-align: center;
+  margin: 0 0 var(--pcm-space-7);
+  box-shadow: var(--pcm-shadow-lg);
+}
+.pcm-cta h2 { color: #fff; margin-bottom: var(--pcm-space-3); }
+.pcm-cta p  { color: #e2e8f0; max-width: 700px; margin: 0 auto var(--pcm-space-5); }
+.pcm-cta-btn {
+  display: inline-block; background: #fff;
+  color: var(--pcm-primary) !important;
+  font-weight: 700;
+  padding: var(--pcm-space-3) var(--pcm-space-6);
+  border-radius: var(--pcm-radius);
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.pcm-cta-btn:hover { transform: translateY(-1px); box-shadow: var(--pcm-shadow); text-decoration: none; }
+
+
+/* ---------- 13. Meta footer (author / date) ---------------------------- */
+.pcm-meta {
+  border-top: 1px solid var(--pcm-border);
+  padding-top: var(--pcm-space-5);
+  font-size: var(--pcm-fs-small); color: var(--pcm-muted);
+}
+.pcm-meta p { margin: 0 0 var(--pcm-space-2); }
+
+
+/* ---------- 14. Responsive — mobile (<= 768px) ------------------------- */
+@media (max-width: 768px) {
+  :root {
+    --pcm-fs-body: 16px; --pcm-fs-h1: 26px; --pcm-fs-h2: 22px; --pcm-fs-h3: 18px;
+  }
+  .pcm-article   { margin: var(--pcm-space-5) auto; padding: 0 var(--pcm-space-4); }
+  .pcm-hero      { padding: var(--pcm-space-6) var(--pcm-space-4); }
+  .pcm-hero-desc { font-size: 16px; }
+  .pcm-toc ol    { columns: 1; }
+  .pcm-toc, .pcm-related { padding: var(--pcm-space-4); }
+  .pcm-cta       { padding: var(--pcm-space-6) var(--pcm-space-4); }
+  .pcm-img-grid  { grid-template-columns: 1fr; }
+  .pcm-table-wrap table { font-size: 14px; }
+  .pcm-table-wrap thead th,
+  .pcm-table-wrap tbody td { padding: var(--pcm-space-2) var(--pcm-space-3); }
+}
+
+
+/* ---------- 15. Dark mode --------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pcm-text: #e5e7eb; --pcm-heading: #f9fafb; --pcm-muted: #9ca3af;
+    --pcm-link: #5eead4; --pcm-link-hover: #99f6e4;
+    --pcm-bg: #0f172a; --pcm-bg-soft: #1e293b;
+    --pcm-bg-tldr: #064e3b; --pcm-bg-tip: #064e3b;
+    --pcm-bg-warn: #4a2410; --pcm-bg-def: #1e2a52;
+    --pcm-border: #334155; --pcm-border-strong: #475569;
+    --pcm-shadow-sm: 0 1px 3px rgba(0,0,0,.4);
+    --pcm-shadow:    0 4px 15px rgba(0,0,0,.4);
+    --pcm-shadow-lg: 0 8px 24px rgba(0,0,0,.5);
+  }
+  body                { background: #0b1220; }
+  .pcm-article h3     { color: #5eead4; }
+  .pcm-definition p   { color: #c7d2fe; }
+  .pcm-tip p          { color: #bbf7d0; }
+  .pcm-warning p      { color: #fed7aa; }
+  .pcm-table-wrap tbody tr:nth-child(even) td { background: #1e293b; }
+  .pcm-faq details, .pcm-toc, .pcm-img-card  { background: var(--pcm-bg-soft); }
+  .pcm-cta-btn        { background: #f8fafc; }
+}
+
+
+/* ---------- 16. Print -------------------------------------------------- */
+@media print {
+  .pcm-hero, .pcm-cta { background: #fff !important; color: #000 !important; box-shadow: none; }
+  .pcm-hero h1, .pcm-cta h2 { color: #000 !important; }
+  .pcm-article a::after { content: " (" attr(href) ")"; font-size: .85em; color: #555; }
+  .pcm-faq details { break-inside: avoid; }
+  .pcm-faq details:not([open]) > *:not(summary) { display: block; }
+}
+
+/* End of article.css */
