@@ -366,3 +366,203 @@ A complete vertical mobile screen illustration (9:16). A cozy cottage garden in 
 ---
 
 > **使用建议**：先用第九章的具体场景 Prompt 生成 5-6 张完整画面，确定满意的风格后，再用第十一章的模板批量生成所有季节/时间/宠物的组合。
+
+
+---
+
+## 十二、剖面图视角 · 完整产品画面（一屏看到院子+屋内）
+
+> **核心构图：像娃娃屋/蚂蚁农场——上半屏是院子，下半屏是屋内，宠物在其中自由活动。**  
+> 这是最终产品的真实画面构图，用户打开App就看到这个。
+
+### 12.1 剖面图 · 猫在院子晒太阳 · 春天白天
+
+```
+A vertical cross-section dollhouse view of a tiny cottage (9:16 ratio). The image is split naturally into two connected areas:
+
+TOP HALF — THE GARDEN: Blue sky with soft white clouds at the very top. A cherry blossom tree on the right with pink petals floating down. Green grass lawn with scattered daisies. A wooden picket fence with climbing roses at the edges. A stone path. A food bowl near the cottage entrance. An orange tabby cat is lying stretched out on the sunny grass, belly half-exposed, eyes closed in bliss. Golden sunlight from upper right. A blue butterfly drifts past.
+
+BOTTOM HALF — THE INTERIOR: Visible through a cross-section cut, the cozy room below ground level / below the garden. A large window on the left shows the garden from inside. A soft sofa with cushions. A round rug on the wooden floor. A small pet bed with a blanket. A bookshelf. A lit candle on a side table. Warm cream walls. The room is empty (cat is outside) but feels lived-in and warm.
+
+The two spaces are connected by the cottage doorway — a cute arched opening with a small awning. The overall composition reads as ONE complete home in a single frame. The style is warm watercolor illustration with soft brushstrokes, paper texture overlay, gentle hand-painted quality. Extremely cozy, peaceful, full of life. No UI, no text, no frame. --ar 9:16 --s 900 --v 6.1
+```
+
+### 12.2 剖面图 · 猫在屋内窗台 · 下雨天
+
+```
+A vertical cross-section dollhouse view of a tiny cottage in the rain (9:16 ratio).
+
+TOP HALF — THE GARDEN IN RAIN: Grey-blue overcast sky with soft rain falling as gentle streaks. The tree's leaves are wet and slightly drooping. The grass glistens. Small puddles form on the stone path. Rain droplets create tiny ripples. The fence is wet. The garden is misty and quiet. No animal outside — it's raining.
+
+BOTTOM HALF — THE COZY INTERIOR: Through the cross-section, the warm room below. A tabby cat is sitting on the wide windowsill, gazing up and out at the rain with curious eyes, one paw touching the glass where raindrops streak down. A warm amber table lamp glows on the side table. The sofa has a cozy throw blanket. The fireplace has gentle orange embers. The contrast between the cool rainy garden above and the warm golden interior below is the emotional core of this image.
+
+Connected by the cottage door (closed, with a small warm light above it). The rain falls only on the top half; the bottom half is completely dry and warm. Watercolor illustration, atmospheric rain effects, warm vs cool color storytelling. --ar 9:16 --s 950 --v 6.1
+```
+
+### 12.3 剖面图 · 狗在屋内地毯睡觉 · 冬天夜晚
+
+```
+A vertical cross-section dollhouse view of a tiny cottage on a winter night (9:16 ratio).
+
+TOP HALF — THE GARDEN AT NIGHT: Deep blue-purple night sky filled with stars and a crescent moon at the top. Light snow falling gently. The tree is bare with snow-dusted branches. A thin layer of clean white snow covers the grass and fence tops. The garden is quiet, still, and silvery under moonlight. No footprints in the snow.
+
+BOTTOM HALF — THE WARM INTERIOR: Through the cross-section, a deeply cozy room glowing with warm amber light. A small golden corgi is curled up on a round pet bed on the rug, fast asleep, breathing peacefully. A fireplace crackles with warm orange light on the right wall. A table lamp adds golden glow. The window shows the snowy garden from inside. A small Christmas stocking hangs by the fireplace. Everything inside radiates warmth and safety.
+
+The emotional contrast: cold silent beautiful winter above, warm protected sleeping puppy below. The cottage door is closed with a small wreath. Watercolor illustration, deep blue vs warm amber palette, extremely emotional and cozy. --ar 9:16 --s 1000 --v 6.1
+```
+
+### 12.4 剖面图 · 猫在院子追蝴蝶 · 夏天午后
+
+```
+A vertical cross-section dollhouse view of a tiny cottage in summer afternoon (9:16 ratio).
+
+TOP HALF — THE GARDEN IN SUMMER: Bright warm blue sky, a few white clouds. The tree is full and lush green, providing dappled shade. Vibrant grass, sunflowers along the fence, lavender bushes. A white fluffy cat is mid-leap in the garden, one paw reaching up toward a blue butterfly just above its head. Its eyes are wide and playful. Golden afternoon sunlight creates warm shadows. Fireflies are just beginning to appear.
+
+BOTTOM HALF — THE INTERIOR (VISIBLE BUT SECONDARY): Through the cross-section, the room below. The window is open, letting in a summer breeze (curtain billowing slightly). A small fan on the shelf. The room is bright and airy with natural light. The pet bed is empty (cat is outside playing). A water bowl sits near the sofa. The room waits patiently for the cat to come back in.
+
+The cottage door is open, connecting the two spaces. The energy is playful and alive — a perfect summer day. Watercolor illustration, vibrant summer greens and golds, dynamic playful composition. --ar 9:16 --s 900 --v 6.1
+```
+
+### 12.5 剖面图 · 黄昏过渡 · 宠物在门口
+
+```
+A vertical cross-section dollhouse view of a tiny cottage at golden hour sunset (9:16 ratio).
+
+TOP HALF — THE GARDEN AT SUNSET: Warm orange-pink sky with golden clouds. The tree casts a long shadow. Everything is bathed in warm amber light. Autumn leaves drift slowly. The fence glows golden in the sunset light.
+
+BOTTOM HALF — THE INTERIOR AT DUSK: The room is transitioning — the lamp has just been turned on (warm golden), but sunset light still pours through the window creating orange rectangles on the floor. The room has a "between day and night" magical quality.
+
+IN THE CENTER — THE DOORWAY: A small orange cat sits right in the cottage doorway, half-in half-out, silhouetted against the sunset. Looking outward at the fading light. This is the emotional peak — a quiet moment of reflection at the border between two worlds. Watercolor illustration, full golden hour palette, cinematic and emotional. --ar 9:16 --s 1000 --v 6.1
+```
+
+### 12.6 通用剖面图模板
+
+```
+A vertical cross-section dollhouse view of a tiny cottage (9:16 ratio).
+
+TOP HALF — THE GARDEN: [天空描述] sky. [树的状态]. [草地和花的描述]. [围栏描述]. [如果宠物在外面：A [品种+颜色] [猫/狗] is [室外动作] on the lawn]. [光线和天气效果]. [粒子：petals / fireflies / snowflakes / leaves].
+
+BOTTOM HALF — THE INTERIOR: Through the cross-section cut. [窗户描述和窗外可见景色]. [家具：sofa, rug, pet bed, bookshelf, lamp/fireplace]. [如果宠物在屋内：A [品种+颜色] [猫/狗] is [室内动作]]. [光线：warm lamp / natural window light / fireplace glow]. [季节特有物件].
+
+Connected by the cottage doorway [门的状态：open/closed]. The overall composition shows a complete cozy home in one frame. Watercolor illustration, [色彩情绪], paper texture overlay, hand-painted quality. No UI, no text. --ar 9:16 --s 900 --v 6.1
+```
+
+---
+
+## 十三、动画分层技术说明（给开发/动画团队）
+
+> 水彩风格的动态实现方案——解释"静态画面怎么做成活的"
+
+### 13.1 分层架构图
+
+```
+渲染顺序（从底到顶）：
+
+Layer 0 ─ 纸张纹理 (Paper Grain)
+           永远固定叠加在所有内容之上
+           blend mode: multiply, opacity 15-20%
+           确保任何时刻画面都有"纸上作画"的质感
+
+Layer 1 ─ 背景底色 (Sky / Walls / Ground base)
+           静态大色块，随时间/季节整体变色（极慢渐变）
+           如：白天→黄昏 = 背景色在30分钟内从蓝调渐变到橙调
+
+Layer 2 ─ 背景物件 (Tree / Fence / Furniture)
+           90%静态 + 10%微动
+           微动实现：
+           - 树叶：Shader顶点位移（sin波，极慢）
+           - 草地：同上
+           - 窗帘：Spine简单骨骼飘动
+           - 壁炉火焰：3-4帧序列图循环
+
+Layer 3 ─ 互动物件 (Food bowl / Toys)
+           有两个状态的素材切换（如：空碗/满碗）
+           切换时用0.3s淡入淡出（dissolve）
+
+Layer 4 ─ 宠物主体 (Spine 2D Animation)
+           ★ 唯一做大幅度运动的层 ★
+           骨骼动画实现所有行为：走、跑、睡、吃、伸懒腰...
+           宠物角色本身的每一块皮肤(skin)都是手绘水彩风的PNG
+
+Layer 5 ─ 前景粒子 (Particles)
+           花瓣飘落、萤火虫、浮尘、雪花、雨丝
+           用轻量粒子系统（GPU Particle）
+           每种粒子是一个小的手绘PNG素材
+
+Layer 6 ─ 光影叠加层 (Lighting Overlay)
+           半透明渐变色块叠加
+           控制整体画面的"时间感"：
+           - 白天：浅黄暖色 overlay, opacity 10%
+           - 黄昏：橙色 overlay, opacity 25%
+           - 夜晚：深蓝 overlay, opacity 40% + 灯光区域mask排除
+
+Layer 7 ─ 纸张纹理 (最终覆盖)
+           同Layer 0，确保叠加在粒子和光影之上
+```
+
+### 13.2 "喂食"互动的完整技术流程
+
+```
+[用户点击喂食按钮]
+     │
+     ▼
+(1) UI反馈：按钮轻弹动画 (Lottie, 0.2s)
+     │
+     ▼
+(2) Layer 3 物件切换：
+    food_bowl_empty.png → food_bowl_full.png
+    transition: cross-dissolve 0.3s
+     │
+     ▼
+(3) Layer 4 宠物动画序列：
+    ┌─ 如果宠物当前在室外（院子）─┐
+    │  state: idle_outdoor           │
+    │       ↓                        │
+    │  trigger: "notice_food"        │
+    │  animation: ears_perk_up (0.5s)│
+    │       ↓                        │
+    │  trigger: "run_to_bowl"        │
+    │  animation: trot_cycle         │
+    │  + position tween to bowl_pos  │
+    │  duration: 1.5-2s              │
+    │  easing: ease-in-out           │
+    │       ↓                        │
+    │  trigger: "eating"             │
+    │  animation: head_down_eat_loop │
+    │  + tail_wag_loop (overlay)     │
+    │  duration: 4s                  │
+    │       ↓                        │
+    │  trigger: "satisfied"          │
+    │  animation: lick_lips (0.8s)   │
+    │  → return to idle              │
+    └────────────────────────────────┘
+     │
+     ▼
+(4) Layer 3 物件切换回：
+    food_bowl_full.png → food_bowl_empty.png
+    transition: cross-dissolve 0.5s (delayed 4s)
+     │
+     ▼
+(5) 可选：Layer 5 粒子效果
+    emit: small_heart_particles × 3
+    从宠物头顶发射，向上飘散消失 (1s)
+```
+
+### 13.3 为什么这个方案能保持"水彩画感"
+
+| 常见顾虑 | 解决方式 |
+|---------|---------|
+| "动起来就不像水彩了" | 宠物Spine的skin本身就是水彩手绘PNG——它动的只是骨骼位置，画面质感不变 |
+| "帧率太高看起来像3D" | 限定15fps，Spine可以设置降帧输出，保留手绘逐帧感 |
+| "背景动了会穿帮" | 背景几乎不动（只有草/叶的Shader微晃），主运动全在宠物层 |
+| "粒子太技术感" | 粒子素材本身是手绘的小PNG（一片手画的花瓣、一个手画的萤火虫光点）|
+| "整体太干净" | 永远有Paper Texture叠加，让画面始终有"印在纸上"的颗粒感 |
+
+### 13.4 技术选型建议
+
+| 平台 | 推荐方案 | 说明 |
+|------|---------|------|
+| 微信小程序 | Canvas 2D + Spine Runtime for JS | 小程序支持Canvas，Spine有JS运行时 |
+| H5网页 | PixiJS + Spine Plugin + 自定义粒子 | PixiJS性能好，Spine插件成熟 |
+| Flutter App | Flame Engine + Spine Flutter | Flame是Flutter的2D游戏引擎 |
+| 跨平台首选 | **PixiJS**（H5+小程序都能用） | 一套代码适配多端 |
