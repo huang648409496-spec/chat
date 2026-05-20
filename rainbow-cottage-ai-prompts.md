@@ -257,3 +257,112 @@ Clip Skip: 2
 ---
 
 > **重要提醒**：AI 生成的概念图仅作为方向参考和沟通工具。最终产品内使用的美术资产必须由人工绘制/精修，确保风格的精确控制和 Spine 动画的可用性。
+
+
+
+---
+
+## 九、完整产品画面 Prompts（场景 + 宠物一体）
+
+> **这是最重要的部分——模拟用户打开手机时看到的完整画面。**  
+> 所有图都是 9:16 竖屏，场景和宠物融合在一起，无UI。
+
+### 9.1 室内 · 猫在窗台晒太阳 · 春天白天
+
+```
+A complete mobile phone screen illustration (9:16 vertical). Inside a cozy cottage room: a large window takes up the left-center of the frame, showing a sunny spring garden with green grass and cherry blossoms outside. Warm golden sunlight pours through the window, creating visible light beams and floor light patches. An orange tabby cat is curled up on the wide windowsill, eyes half-closed in contentment, tail draped over the edge. Below the window: a soft sofa with a cushion, a round warm-toned rug on wooden floor, a small bookshelf on the right wall, a lit candle on a side table. The room is complete, lived-in, warm. No text, no UI, no frames — this IS the product screen. Watercolor illustration, hand-painted quality, paper texture, warm golden indoor lighting, every detail carefully rendered. --ar 9:16 --s 900 --v 6.1
+```
+
+### 9.2 室内 · 狗在地毯上打盹 · 夏天午后
+
+```
+A complete vertical mobile screen illustration. A cozy cottage room interior in warm summer afternoon light. Through the large window: lush green garden, blue sky, a butterfly outside the glass. A small golden corgi is sleeping on a round soft rug in the center of the room, belly rising and falling gently, all four short legs slightly spread. Around the room: a comfy sofa with throw pillows, a small fan on the shelf, a water bowl near the wall, a chew toy nearby, warm wooden floors. Afternoon golden light creates long soft shadows. The entire frame is the complete room — ceiling to floor, wall to wall. Warm, peaceful, alive. Watercolor illustration style, no UI, no text, no border. --ar 9:16 --s 850
+```
+
+### 9.3 室外 · 猫在院子里嗅花 · 春天上午
+
+```
+A complete vertical mobile screen illustration. A cozy cottage garden in spring morning. The full scene shows: blue sky with soft clouds at top (1/4 of frame), a cherry blossom tree on the right with petals falling, green lawn in the center, a wooden picket fence with climbing roses at the edges, a stone path leading to the cottage door (bottom of frame). A fluffy grey British Shorthair cat is in the middle of the lawn, leaning forward to sniff a cluster of pink wildflowers, tail up with curiosity. A blue butterfly floats nearby. A food bowl and water dish sit near the cottage door. Golden morning sunlight from upper-right creates dappled tree shadows on the grass. The scene fills the entire phone screen — this is exactly what the user sees when they open the app. Watercolor illustration, no UI, no text, complete scene. --ar 9:16 --s 900
+```
+
+### 9.4 室外 · 金毛在草地翻肚皮 · 夏天
+
+```
+A complete vertical mobile screen illustration. A cottage garden in summer, full scene from sky to ground. Bright blue sky with a few white clouds, a lush leafy tree providing partial shade, vibrant green grass covering the ground, colorful flowers along the fence edges. A large golden retriever is lying on its back in the sunny center of the lawn, all four paws in the air, tongue out, eyes closed in pure joy. Dappled sunlight creates golden spots on the dog's belly. A small bird watches from the fence. A butterfly drifts past. The cottage door is visible in the background with warm light inside. This is the complete product screen — everything the user sees. Joyful, alive, warm. Watercolor illustration, no UI overlays. --ar 9:16 --s 900
+```
+
+### 9.5 室内 · 猫在床上蜷睡 · 冬天夜晚
+
+```
+A complete vertical mobile screen illustration. A cozy cottage room at night in winter. The large window shows deep blue night sky with stars and a crescent moon, soft snowfall outside. Inside the room: a warm golden table lamp glows on a side table, a small fireplace with orange embers on the right wall, warm amber light fills the room. A small cream-colored cat is curled into a perfect ball on a round pet bed with a soft blanket, fast asleep. The room details: bookshelf with a few books, a small potted evergreen, a mug on the side table, wooden floor with a cozy rug. Everything is bathed in the warm lamplight contrasting with the cool blue window. Complete room visible — this is the full product screen. Deeply peaceful and protective. Watercolor illustration, warm amber vs cool blue palette. --ar 9:16 --s 900
+```
+
+### 9.6 室外 · 小狗追蝴蝶 · 秋天下午
+
+```
+A complete vertical mobile screen illustration. A cottage garden in autumn afternoon. Warm amber sky with golden clouds, the tree has vibrant red-orange leaves slowly falling. A small white dog with brown spots is mid-run across the lawn chasing a yellow butterfly, one ear flopping, mouth open in excitement. The grass has patches of gold and green. Fallen leaves dot the path. The fence has autumn vines. The cottage window in the background glows with warm interior light. Long golden shadows stretch across the scene. The complete garden is visible from sky to foreground grass. Playful, warm, alive with autumn energy. Watercolor illustration, no UI, full screen composition. --ar 9:16 --s 850
+```
+
+### 9.7 过渡场景 · 猫从室外走进屋内 · 黄昏
+
+```
+A complete vertical mobile screen illustration showing both indoor and outdoor in one frame. The composition: upper half shows the cottage garden at golden hour sunset (orange sky, warm shadows on grass, the tree silhouetted). Lower half shows the cottage interior through an open doorway (warm lamp lit inside, cozy furniture visible). In the center/doorway: a tabby cat is stepping through the cottage door, one paw inside, looking back at the sunset garden. The transition between warm outdoor sunset and warm indoor lamplight. This shows the "two spaces connected" concept. Watercolor illustration, golden hour palette, architectural storytelling. --ar 9:16 --s 900
+```
+
+---
+
+## 十、带 UI 的完整界面 Mockup Prompts
+
+> **注意**：这些 Prompt 用来生成含UI元素的界面概念图，用于向团队/投资人展示产品样貌。
+
+### 10.1 主界面 · 默认状态（纯场景无UI）
+
+```
+A smartphone screen mockup showing a mobile app interface. The screen displays a beautiful watercolor illustration of a cozy cottage room with a cat sleeping on a windowsill, warm sunlight streaming in, garden visible through the window. The screen has NO buttons, NO navigation bars, NO text overlays — it is purely the illustration filling the entire screen edge to edge. The phone has thin bezels. This demonstrates the "invisible UI" design philosophy. The illustration should look like a living painting on the phone screen. Clean modern phone frame (iPhone style). --ar 9:19.5 --s 750
+```
+
+### 10.2 主界面 · 底部操作栏浮现状态
+
+```
+A smartphone screen mockup showing a mobile app. The main screen area (top 85%) shows a beautiful watercolor cottage garden with a corgi on the lawn. At the bottom (15%), a semi-transparent frosted glass bar has appeared with 4 small hand-drawn style icons evenly spaced: an envelope icon, a bone/food icon, a camera icon, and a gear icon. The frosted glass bar is subtle, with slight blur effect, not blocking the main scene. The icons are warm-toned line drawings, not filled solid. The overall impression: the scene is still the hero, the UI is whisper-quiet. Modern phone frame. --ar 9:19.5
+```
+
+### 10.3 信件/日记界面
+
+```
+A smartphone screen mockup showing a letter/diary interface. The background is slightly dimmed (the cottage scene is faintly visible behind). In the center: a piece of cream-colored letter paper with soft torn edges is "unfolded" taking up 70% of the screen. On the paper: 3-4 lines of handwritten-style text in warm brown ink (can be placeholder squiggles). At the bottom-right of the letter: a small pink cat paw print as a "signature." The paper has subtle aged texture. At the top of the paper: a tiny date in light grey. The overall feeling is receiving a handwritten letter from someone precious. --ar 9:16
+```
+
+### 10.4 初次进入 · 上传照片引导页
+
+```
+A smartphone screen mockup showing an onboarding/upload screen. Clean warm cream background. In the center: a large circular dashed-border area (photo upload zone) with a small camera icon and gentle text placeholder suggesting "upload a photo." Above the circle: a small watercolor illustration of a rainbow and a paw print. Below: a warm-colored rounded button. The overall design is minimal, warm, and inviting — not clinical or techy. Soft rounded corners everywhere. The font feels handwritten. No harsh colors. --ar 9:16
+```
+
+### 10.5 分享卡片 · 生成预览
+
+```
+A smartphone screen showing a share card being generated. The card is centered on screen with a soft shadow. The card itself: top portion has a beautiful watercolor scene (cat in sunny garden), middle has one line of handwritten text "球球在彩虹桥小屋的第30天 ☀️", bottom has a small paw-print logo and a QR code area. Around the card: a dimmed background. Below the card: two soft buttons — "save to album" and "share." The overall UI is warm, minimal, the card is the hero. --ar 9:16
+```
+
+---
+
+## 十一、一体化场景+宠物的通用模板
+
+> 用 [ ] 替换变量，直接生成任何组合的完整产品画面
+
+### 模板A：室内完整画面
+
+```
+A complete vertical mobile screen illustration (9:16). Interior of a cozy cottage room in [春/夏/秋/冬] during [白天/黄昏/夜晚]. [光线描述：Warm golden sunlight streams through the window / Amber sunset light fills the room / A warm lamp and fireplace glow in the dark]. A [品种+颜色] [猫/狗] is [动作：sleeping curled up on the pet bed / sitting on the windowsill gazing outside / stretching on the rug / playing with a small toy]. Room details visible: [窗户showing garden outside], soft sofa, round rug, bookshelf, [季节元素：lit fireplace for winter / open window with breeze for summer]. The entire room fills the screen from ceiling to floor. No UI, no text, no borders. This is exactly what the user sees when opening the app. Watercolor illustration, hand-painted quality, paper texture overlay, [情绪：deeply peaceful / warm and cozy / gentle and dreamlike]. --ar 9:16 --s 900
+```
+
+### 模板B：室外完整画面
+
+```
+A complete vertical mobile screen illustration (9:16). A cozy cottage garden in [春/夏/秋/冬] during [清晨/上午/午后/黄昏]. Full scene from [天空描述] sky at top to [地面描述] ground at bottom. The garden contains: a [季节状态] tree, a wooden fence with [植物], a stone path, a food bowl near the cottage door, [季节花卉]. A [品种+颜色] [猫/狗] is [动作：chasing a butterfly / eating from the bowl / rolling on the grass / napping under the tree / sniffing flowers]. [光线：Golden morning light from the right / Warm afternoon sun overhead / Long amber sunset shadows / Soft diffused overcast light]. [粒子效果：Cherry blossom petals falling / Fireflies glowing / Autumn leaves drifting / Gentle snowflakes]. The complete garden fills the entire phone screen. No UI, no text. Watercolor illustration, complete scene, product-ready. --ar 9:16 --s 900
+```
+
+---
+
+> **使用建议**：先用第九章的具体场景 Prompt 生成 5-6 张完整画面，确定满意的风格后，再用第十一章的模板批量生成所有季节/时间/宠物的组合。
